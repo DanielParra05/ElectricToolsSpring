@@ -2,17 +2,23 @@ package com.spring.electric.tools.models.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
-@Table(name="clientes")
+@Table(name="CLIENTE")
 public class Cliente implements Serializable{
 	
 	/**
@@ -22,23 +28,27 @@ public class Cliente implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(nullable = false)
+	@Column(name="ID_CLIENTE")
+	private Long idCliente;
+	@Column(name = "NOMBRE",nullable = false)
 	private String nombre;
+	@Column(name = "APELLIDO")
 	private String apellido;
-	@Column(nullable = false, unique = true)
+	@Column(name ="EMAIL",nullable = false, unique = true)
 	private String email;
+	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
 	
-	@Column(name = "create_at")
+	private List<Orden> listaOrdenes;
+	
+	@Column(name = "CREATE_AT")
 	private LocalDate createAt;
 
 	public Long getId() {
-		return id;
+		return idCliente;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idCliente = id;
 	}
 
 	public String getNombre() {

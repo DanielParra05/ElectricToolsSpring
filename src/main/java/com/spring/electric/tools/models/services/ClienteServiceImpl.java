@@ -19,15 +19,13 @@ public class ClienteServiceImpl implements ClienteService{
 	@Override
 	@Transactional(readOnly=true)
 	public List<Cliente> findAll() {
-		// Lista todos los clientes de la base de datos
 		return (List<Cliente>)clienteDAO.findAll();
 	}
 
 
 	@Override
-	@Transactional
+	@Transactional(readOnly=true)
 	public Cliente findById(Long id) {
-		// TODO Auto-generated method stub
 		return clienteDAO.findById(id).orElse(null);
 	}
 
@@ -35,16 +33,14 @@ public class ClienteServiceImpl implements ClienteService{
 	@Override
 	@Transactional
 	public Cliente save(Cliente cliente) {
-		
 		return clienteDAO.save(cliente);
 	}
 
 
 	@Override
+	@Transactional
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
 		clienteDAO.deleteById(id);
 	}
-
 }
 
