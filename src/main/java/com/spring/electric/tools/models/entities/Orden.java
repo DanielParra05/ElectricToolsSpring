@@ -5,18 +5,19 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.ForeignKey;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.lang.Nullable;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "ORDEN")
+@Table(name = "ORDENES")
 public class Orden implements Serializable {
 
 	/**
@@ -28,25 +29,37 @@ public class Orden implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_ORDEN")
 	private Long idOrden;
+
 	@Column(name = "FECHA_ENTRADA")
 	private LocalDate fechaEntrada;
-	@Column(name = "FECHA_SALIDA",nullable = true)
+
+	@Column(name = "FECHA_SALIDA", nullable = true)
 	private LocalDate fechaSalida;
-	@ManyToOne
-	@JoinColumn(name = "cliente",foreignKey = @ForeignKey(name = "FK_CLIENTE"))
+	
+	@NotNull(message="cliente vacio")
+	@ManyToOne(fetch = FetchType.LAZY) // Genera un proxy hacia la clase cliente
+	@JoinColumn(name = "cliente_id")
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) // Se ignoran en el JSON los atributos generados
+																	// por el proxy debido a LAZY
 	private Cliente cliente;
+
 	@Column(name = "NOMBRE_ARTICULO")
 	private String nombreArticulo;
+
 	@Column(name = "MARCA_ARTICULO")
 	private String marcaArticulo;
+
 	@Column(name = "MODELO_ARTICULO")
 	private String modeloArticulo;
+
 	@Column(name = "SERIAL_ARTICULO")
 	private String serialArticulo;
-	@Column(name= "PROBLEMA_REPORTADO",nullable = false)
+
+	@Column(name = "PROBLEMA_REPORTADO")
 	private String problemaReportado;
-	@Column(name = "VALOR",nullable = true)
-	private String valor;
+
+	@Column(name = "VALOR", nullable = true)
+	private Integer valor;
 
 	public Long getIdOrden() {
 		return idOrden;
@@ -120,11 +133,14 @@ public class Orden implements Serializable {
 		this.fechaSalida = fechaSalida;
 	}
 
-	public String getValor() {
+	public Integer getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(Integer valor) {
 		this.valor = valor;
 	}
+
+	
+	
 }

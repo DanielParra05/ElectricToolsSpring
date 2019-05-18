@@ -2,18 +2,15 @@ package com.spring.electric.tools.models.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
-@Table(name="CLIENTE")
+@Table(name="CLIENTES")
 public class Cliente implements Serializable{
 	
 	/**
@@ -30,10 +27,20 @@ public class Cliente implements Serializable{
 	private String nombre;	
 	
 	@Column(name = "APELLIDO")
+<<<<<<< HEAD
 	private String apellido;	
 	
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)	
 	private List<Orden> listaOrdenes;
+=======
+	private String apellido;
+	
+	@Column(name ="EMAIL", unique = true)
+	private String email;	
+	
+	@Column(name = "CREATE_AT")
+	private LocalDate createAt;
+>>>>>>> 8ffcda8c2e1160124acd77edb40682944a307353
 	
 	@Column(name="CEDULA")
 	private String cedula;
@@ -72,15 +79,7 @@ public class Cliente implements Serializable{
 	public void setIdCliente(Long idCliente) {
 		this.idCliente = idCliente;
 	}
-
-	public List<Orden> getListaOrdenes() {
-		return listaOrdenes;
-	}
-
-	public void setListaOrdenes(List<Orden> listaOrdenes) {
-		this.listaOrdenes = listaOrdenes;
-	}
-
+	
 	public String getCedula() {
 		return cedula;
 	}
