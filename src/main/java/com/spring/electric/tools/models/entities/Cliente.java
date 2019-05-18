@@ -30,25 +30,16 @@ public class Cliente implements Serializable{
 	private String nombre;	
 	
 	@Column(name = "APELLIDO")
-	private String apellido;
-	
-	@Column(name ="EMAIL",nullable = false, unique = true)
-	private String email;	
+	private String apellido;	
 	
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)	
 	private List<Orden> listaOrdenes;
 	
-	@Column(name = "CREATE_AT")
-	private LocalDate createAt;
-	
 	@Column(name="CEDULA")
 	private String cedula;
 	
-	@Column(name="DIRECCION")
-	private String direccion;
-	
-	@Column(name="TELEFONOS")
-	private String telefonos;
+	@Column(name="TELEFONO")
+	private String telefono;
 
 	public Long getId() {
 		return idCliente;
@@ -72,22 +63,6 @@ public class Cliente implements Serializable{
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public LocalDate getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(LocalDate createAt) {
-		this.createAt = createAt;
 	}
 
 	public Long getIdCliente() {
@@ -114,22 +89,12 @@ public class Cliente implements Serializable{
 		this.cedula = cedula;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
-
-	public String getTelefonos() {
-		return telefonos;
-	}
-
-	public void setTelefonos(String telefonos) {
-		this.telefonos = telefonos;
-	}
-
 	
-
 }

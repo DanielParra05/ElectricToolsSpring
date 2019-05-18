@@ -71,7 +71,6 @@ public class ClienteRestController {
 		Cliente clienteNew = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
-			cliente.setCreateAt(LocalDate.now());
 			clienteNew = clienteService.save(cliente);
 		}catch(DataAccessException e) {
 			response.put("mensaje", "Error");
@@ -105,7 +104,8 @@ public class ClienteRestController {
 		try{
 			clienteActual.setApellido(cliente.getApellido());
 			clienteActual.setNombre(cliente.getNombre());
-			clienteActual.setEmail(cliente.getEmail());
+			clienteActual.setCedula(cliente.getCedula());
+			clienteActual.setTelefono(cliente.getTelefono());
 			clienteActualizado = clienteService.save(clienteActual);
 			
 		}catch (DataAccessException e) {
