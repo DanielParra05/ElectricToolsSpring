@@ -26,7 +26,7 @@ import com.spring.electric.tools.models.services.OrdenServiceImpl;
 @RestController
 @RequestMapping("/api")
 public class OrdenRestControllers {
-	
+
 	@Autowired
 	private OrdenServiceImpl ordenService;
 
@@ -36,7 +36,8 @@ public class OrdenRestControllers {
 	}
 
 	/**
-	 * Obtiene una orden 
+	 * Obtiene una orden
+	 * 
 	 * @param id => Orden a mostrar
 	 * @return
 	 */
@@ -61,47 +62,48 @@ public class OrdenRestControllers {
 
 	/**
 	 * Crea una nueva orden
+	 * 
 	 * @param orden => Orden a insertar en la BD
 	 * @return
 	 */
 	@PostMapping("/ordenes")
 	public ResponseEntity<?> create(@RequestBody Orden orden) {
-	
+
 		Orden ordenNew = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
 			orden.setFechaEntrada(LocalDate.now());
 			ordenNew = ordenService.save(orden);
-		}catch(DataAccessException e) {
+		} catch (DataAccessException e) {
 			response.put("mensaje", "Error");
 			response.put("error", e.getMessage() + ": " + e.getMostSpecificCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 		response.put("mensaje", "La orden ha sido creado con exito");
-		response.put("orden",ordenNew);
+		response.put("orden", ordenNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
 	/**
 	 * Actualiza las ordenes segun una orden enviada
+	 * 
 	 * @param orden => orden con los nuevos datos
-	 * @param id => id de la orden a actualizar 
+	 * @param id    => id de la orden a actualizar
 	 * @return
 	 */
 	@PutMapping("/ordenes/{id}")
 	public ResponseEntity<?> update(@RequestBody Orden orden, @PathVariable Long id) {
 		Orden ordenActual = ordenService.findById(id);
 		Orden ordenActualizada = null;
-		Map<String, Object> response = new HashMap<>();		
-		
+		Map<String, Object> response = new HashMap<>();
 
 		if (ordenActual == null) {
 			response.put("mensaje", "Error no se pudo editar. Orden ID: " + id + " no existe en la base de datos");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-		
-		try{
+
+		try {
 			ordenActual.setFechaSalida(orden.getFechaSalida());
 			ordenActual.setMarcaArticulo(orden.getMarcaArticulo());
 			ordenActual.setModeloArticulo(orden.getModeloArticulo());
@@ -109,9 +111,10 @@ public class OrdenRestControllers {
 			ordenActual.setProblemaReportado(orden.getProblemaReportado());
 			ordenActual.setSerialArticulo(orden.getSerialArticulo());
 			ordenActual.setValor(orden.getValor());
+			ordenActual.setCliente(orden.getCliente());
 			ordenActualizada = ordenService.save(ordenActual);
-			
-		}catch (DataAccessException e) {
+
+		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al actualizar en BD");
 			response.put("error", e.getMessage() + ": " + e.getMostSpecificCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -124,20 +127,21 @@ public class OrdenRestControllers {
 
 	/**
 	 * Elimina las ordenes segun un id enviado
+	 * 
 	 * @param id => id de la orden a borrar
 	 * @return
 	 */
 	@DeleteMapping("/ordenes/{id}")
-	public ResponseEntity<?> delete (@PathVariable Long id) {
-		Map<String, Object> response = new HashMap<>();		
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		Map<String, Object> response = new HashMap<>();
 		try {
-			ordenService.delete(id);			
-		}catch (DataAccessException e) {
+			ordenService.delete(id);
+		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al eliminar en BD");
 			response.put("error", e.getMessage() + ": " + e.getMostSpecificCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+
 		response.put("mensaje", "Orden eliminada con exito");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
