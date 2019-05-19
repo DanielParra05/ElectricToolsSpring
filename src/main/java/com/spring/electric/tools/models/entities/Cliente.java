@@ -27,20 +27,7 @@ public class Cliente implements Serializable{
 	private String nombre;	
 	
 	@Column(name = "APELLIDO")
-<<<<<<< HEAD
-	private String apellido;	
-	
-	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)	
-	private List<Orden> listaOrdenes;
-=======
 	private String apellido;
-	
-	@Column(name ="EMAIL", unique = true)
-	private String email;	
-	
-	@Column(name = "CREATE_AT")
-	private LocalDate createAt;
->>>>>>> 8ffcda8c2e1160124acd77edb40682944a307353
 	
 	@Column(name="CEDULA")
 	private String cedula;
