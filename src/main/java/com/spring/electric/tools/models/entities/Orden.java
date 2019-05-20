@@ -27,8 +27,8 @@ public class Orden implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_ORDEN")
-	private Long idOrden;
+	@Column(name = "ID")
+	private long id;
 
 	@Column(name = "FECHA_ENTRADA")
 	private LocalDate fechaEntrada;
@@ -36,9 +36,11 @@ public class Orden implements Serializable {
 	@Column(name = "FECHA_SALIDA", nullable = true)
 	private LocalDate fechaSalida;
 	
+	private String observaciones;
+	
 	@NotNull(message="cliente vacio")
 	@ManyToOne(fetch = FetchType.LAZY) // Genera un proxy hacia la clase cliente
-	@JoinColumn(name = "cliente_id")
+	@JoinColumn(name = "CLIENTE_ID")
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) // Se ignoran en el JSON los atributos generados
 																	// por el proxy debido a LAZY
 	private Cliente cliente;
@@ -58,15 +60,19 @@ public class Orden implements Serializable {
 	@Column(name = "PROBLEMA_REPORTADO")
 	private String problemaReportado;
 
-	@Column(name = "VALOR", nullable = true)
-	private Integer valor;
+	@Column(name = "VALOR_ARREGLO", nullable = true)
+	private Integer valorArreglo;
+	
+	@Column(name = "VALOR_RESPUESTOS", nullable = true)
+	private Integer valorRepuestos;
 
-	public Long getIdOrden() {
-		return idOrden;
+
+	public long getId() {
+		return id;
 	}
 
-	public void setIdOrden(Long idOrden) {
-		this.idOrden = idOrden;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public LocalDate getFechaEntrada() {
@@ -133,14 +139,28 @@ public class Orden implements Serializable {
 		this.fechaSalida = fechaSalida;
 	}
 
-	public Integer getValor() {
-		return valor;
+	public String getObservaciones() {
+		return observaciones;
 	}
 
-	public void setValor(Integer valor) {
-		this.valor = valor;
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 
-	
+	public Integer getValorArreglo() {
+		return valorArreglo;
+	}
+
+	public void setValorArreglo(Integer valorArreglo) {
+		this.valorArreglo = valorArreglo;
+	}
+
+	public Integer getValorRepuestos() {
+		return valorRepuestos;
+	}
+
+	public void setValorRepuestos(Integer valorRepuestos) {
+		this.valorRepuestos = valorRepuestos;
+	}	
 	
 }

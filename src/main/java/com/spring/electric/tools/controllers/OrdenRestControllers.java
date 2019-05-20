@@ -110,7 +110,9 @@ public class OrdenRestControllers {
 			ordenActual.setNombreArticulo(orden.getNombreArticulo());
 			ordenActual.setProblemaReportado(orden.getProblemaReportado());
 			ordenActual.setSerialArticulo(orden.getSerialArticulo());
-			ordenActual.setValor(orden.getValor());
+			ordenActual.setValorArreglo(orden.getValorArreglo());
+			ordenActual.setValorRepuestos(orden.getValorRepuestos());
+			ordenActual.setObservaciones(orden.getObservaciones());
 			ordenActual.setCliente(orden.getCliente());
 			ordenActualizada = ordenService.save(ordenActual);
 

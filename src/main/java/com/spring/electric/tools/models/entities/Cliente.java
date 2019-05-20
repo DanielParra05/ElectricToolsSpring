@@ -1,7 +1,6 @@
 package com.spring.electric.tools.models.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,8 +19,8 @@ public class Cliente implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_CLIENTE")
-	private Long idCliente;
+	@Column(name="ID")
+	private long id;
 	
 	@Column(name = "NOMBRE",nullable = false)
 	private String nombre;	
@@ -35,12 +34,13 @@ public class Cliente implements Serializable{
 	@Column(name="TELEFONO")
 	private String telefono;
 
-	public Long getId() {
-		return idCliente;
+	
+	public long getId() {
+		return id;
 	}
 
-	public void setId(Long id) {
-		this.idCliente = id;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -59,14 +59,7 @@ public class Cliente implements Serializable{
 		this.apellido = apellido;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
-	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
-	}
-	
 	public String getCedula() {
 		return cedula;
 	}
