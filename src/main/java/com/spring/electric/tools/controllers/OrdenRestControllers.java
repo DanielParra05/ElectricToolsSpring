@@ -1,6 +1,5 @@
 package com.spring.electric.tools.controllers;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.electric.tools.models.entities.Orden;
+import com.spring.electric.tools.models.enums.OrdenEstado;
 import com.spring.electric.tools.models.services.OrdenServiceImpl;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
@@ -72,7 +72,9 @@ public class OrdenRestControllers {
 		Orden ordenNew = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
-			orden.setFechaEntrada(LocalDate.now());
+			if (orden.getId() == 0) {
+				orden.setEstado(OrdenEstado.EN_REPARACION);
+			} 
 			ordenNew = ordenService.save(orden);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error");
@@ -114,6 +116,7 @@ public class OrdenRestControllers {
 			ordenActual.setValorRepuestos(orden.getValorRepuestos());
 			ordenActual.setObservaciones(orden.getObservaciones());
 			ordenActual.setCliente(orden.getCliente());
+			ordenActual.setEstado(orden.getEstado());
 			ordenActualizada = ordenService.save(ordenActual);
 
 		} catch (DataAccessException e) {

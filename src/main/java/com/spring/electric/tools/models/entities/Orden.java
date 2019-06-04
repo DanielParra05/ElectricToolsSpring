@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +17,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.spring.electric.tools.models.enums.OrdenEstado;
 
 @Entity
 @Table(name = "ORDENES")
@@ -36,14 +39,14 @@ public class Orden implements Serializable {
 	@Column(name = "FECHA_SALIDA", nullable = true)
 	private LocalDate fechaSalida;
 	
+	@Column(name = "OBSERVACIONES")
 	private String observaciones;
 	
 	@NotNull(message="cliente vacio")
 	@ManyToOne(fetch = FetchType.LAZY) // Genera un proxy hacia la clase cliente
 	@JoinColumn(name = "CLIENTE_ID")
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) // Se ignoran en el JSON los atributos generados
-																	// por el proxy debido a LAZY
-	private Cliente cliente;
+	private Cliente cliente;										// por el proxy debido a LAZY	
 
 	@Column(name = "NOMBRE_ARTICULO")
 	private String nombreArticulo;
@@ -65,7 +68,10 @@ public class Orden implements Serializable {
 	
 	@Column(name = "VALOR_RESPUESTOS", nullable = true)
 	private Integer valorRepuestos;
-
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="ESTADO", nullable=false)
+	private OrdenEstado estado;
 
 	public long getId() {
 		return id;
@@ -161,6 +167,17 @@ public class Orden implements Serializable {
 
 	public void setValorRepuestos(Integer valorRepuestos) {
 		this.valorRepuestos = valorRepuestos;
-	}	
+	}
+
+	public OrdenEstado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(OrdenEstado estado) {
+		this.estado = estado;
+	}
+
+	
+	
 	
 }
