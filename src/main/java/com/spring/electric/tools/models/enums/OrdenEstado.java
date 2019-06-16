@@ -7,7 +7,7 @@ package com.spring.electric.tools.models.enums;
  */
 public enum OrdenEstado { 
 	EN_REPARACION("En Reparacion"),
-	DE_SALIDA("De Salida");
+	LISTO("Listo");
 	
 	private String valor;
 	
