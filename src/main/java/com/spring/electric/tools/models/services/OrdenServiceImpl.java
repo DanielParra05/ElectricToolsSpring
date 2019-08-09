@@ -56,4 +56,10 @@ public class OrdenServiceImpl implements OrdenService{
 		return ordenDAO.getValorRepuestosTotal(fechaEntrada, fechaSalida);
 	}
 
+	@Override
+	public List<Orden> buscarOrden(String campoBusqueda) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

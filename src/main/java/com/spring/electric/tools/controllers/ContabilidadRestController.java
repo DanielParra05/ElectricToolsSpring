@@ -65,6 +65,19 @@ public class ContabilidadRestController {
 				convertToLocalDate(fechaSalida));
 	}
 
+	
+	/**
+	 * Realiza las operaciones necesarias de obtener los datos
+	 * 
+	 * @return
+	 */
+	@GetMapping("/busqueda/{campoBusqueda}")
+	public Integer busqueda(@PathVariable String campoBusqueda) {
+
+		return ordenService.
+	}
+
+	
 	/**
 	 * Convertidor de fechas
 	 * 

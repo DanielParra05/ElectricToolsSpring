@@ -21,5 +21,7 @@ public interface OrdenService {
 	
 	public void delete (Long id);
 	
+	public List<Orden> buscarOrden(String campoBusqueda);
+	
 
 }
