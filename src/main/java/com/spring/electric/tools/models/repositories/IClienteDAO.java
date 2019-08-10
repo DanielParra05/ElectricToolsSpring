@@ -1,4 +1,4 @@
-package com.spring.electric.tools.models.dao;
+package com.spring.electric.tools.models.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 

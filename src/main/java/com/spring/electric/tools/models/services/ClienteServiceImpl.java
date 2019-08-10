@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.electric.tools.models.dao.IClienteDAO;
 import com.spring.electric.tools.models.entities.Cliente;
+import com.spring.electric.tools.models.repositories.IClienteDAO;
 
 
 @Service

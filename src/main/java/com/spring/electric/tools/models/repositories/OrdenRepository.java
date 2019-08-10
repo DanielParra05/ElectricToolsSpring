@@ -1,4 +1,4 @@
-package com.spring.electric.tools.models.dao;
+package com.spring.electric.tools.models.repositories;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.spring.electric.tools.models.entities.Orden;
+import com.spring.electric.tools.models.repositories.custom.OrdenRepositoryCustom;
 
 public interface OrdenRepository extends CrudRepository<Orden, Long>, OrdenRepositoryCustom{
 	

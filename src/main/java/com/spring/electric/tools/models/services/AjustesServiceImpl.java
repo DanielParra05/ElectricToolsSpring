@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.electric.tools.models.dao.IAjustesDAO;
 import com.spring.electric.tools.models.entities.Ajustes;
+import com.spring.electric.tools.models.repositories.IAjustesDAO;
 
 @Service
 public class AjustesServiceImpl implements AjustesService {

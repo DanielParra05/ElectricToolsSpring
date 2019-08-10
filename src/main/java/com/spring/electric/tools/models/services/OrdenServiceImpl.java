@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.electric.tools.models.dao.OrdenRepository;
-import com.spring.electric.tools.models.dao.OrdenRepositoryCustom;
 import com.spring.electric.tools.models.entities.Orden;
+import com.spring.electric.tools.models.repositories.OrdenRepository;
+import com.spring.electric.tools.models.repositories.custom.OrdenRepositoryCustom;
 
 @Transactional
 @Service
