@@ -1,15 +1,10 @@
 package com.spring.electric.tools.controllers;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
-import javax.sound.midi.Soundbank;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,18 +58,6 @@ public class ContabilidadRestController {
 
 		return ordenService.getValorRepuestosTotal(convertToLocalDate(fechaEntrada),
 				convertToLocalDate(fechaSalida));
-	}
-
-	
-	/**
-	 * Realiza las operaciones necesarias de obtener los datos
-	 * 
-	 * @return
-	 */
-	@GetMapping("/busqueda/{campoBusqueda}")
-	public Integer busqueda(@PathVariable String campoBusqueda) {
-
-		return ordenService.
 	}
 
 	

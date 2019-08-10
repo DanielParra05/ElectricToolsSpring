@@ -7,33 +7,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.electric.tools.models.dao.IOrdenDAO;
+import com.spring.electric.tools.models.dao.OrdenRepository;
+import com.spring.electric.tools.models.dao.OrdenRepositoryCustom;
 import com.spring.electric.tools.models.entities.Orden;
+
+@Transactional
 @Service
-public class OrdenServiceImpl implements OrdenService{
-	
+public class OrdenServiceImpl implements OrdenService {
+
 	@Autowired
-	private IOrdenDAO ordenDAO;
+	OrdenRepository ordenDAO;
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Orden> findAll() {
 		return (List<Orden>) ordenDAO.findAll();
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public Orden findById(Long id) {
 		return ordenDAO.findById(id).orElse(null);
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Orden> getContabilidad(LocalDate fechaEntrada, LocalDate fechaSalida) {
 		return ordenDAO.getContabilidad(fechaEntrada, fechaSalida);
 	}
 
-	
 	@Override
 	@Transactional
 	public Orden save(Orden orden) {
@@ -58,8 +60,7 @@ public class OrdenServiceImpl implements OrdenService{
 
 	@Override
 	public List<Orden> buscarOrden(String campoBusqueda) {
-		// TODO Auto-generated method stub
-		return null;
+		return ordenDAO.buscarOrden(campoBusqueda);
 	}
 
 }

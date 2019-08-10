@@ -74,7 +74,7 @@ public class OrdenRestControllers {
 		try {
 			if (orden.getId() == 0) {
 				orden.setEstado(OrdenEstado.EN_REPARACION);
-			} 
+			}
 			ordenNew = ordenService.save(orden);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error");
@@ -128,6 +128,17 @@ public class OrdenRestControllers {
 		response.put("mensaje", "La orden ha sido actualizado con exito");
 		response.put("orden", ordenActualizada);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+	}
+
+	/**
+	 * Obtener las ordenes que coincidan con los parametros enviados
+	 * 
+	 * @param campoBusqueda valor a buscar
+	 * @return Lista de Ordenes que coincidan
+	 */
+	@GetMapping("/ordenes/busqueda/{campoBusqueda}")
+	public List<Orden> busqueda(@PathVariable String campoBusqueda) {
+		return ordenService.buscarOrden(campoBusqueda);
 	}
 
 	/**
