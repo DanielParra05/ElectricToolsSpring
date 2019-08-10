@@ -1,4 +1,4 @@
-package com.spring.electric.tools.models.dao;
+package com.spring.electric.tools.models.repositories.custom;
 
 import java.util.HashMap;
 import java.util.List;
