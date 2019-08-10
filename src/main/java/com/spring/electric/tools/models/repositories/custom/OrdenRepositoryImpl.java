@@ -20,15 +20,13 @@ public class OrdenRepositoryImpl implements OrdenRepositoryCustom {
 	@Transactional
 	@Override
 	public List<Orden> buscarOrden(String campoBusqueda) {
-		// TODO Auto-generated method stub
-
 		Map<String, Object> params = new HashMap<>();
 
 		// Construccion consulta JPQL
 		String consulta = "SELECT DISTINCT o from Orden o INNER JOIN Cliente c ON c.id = o.cliente ";
 
-		String where = "WHERE CONCAT(:campoBusqueda,'%') LIKE c.cedula OR CONCAT(:campoBusqueda,'%') LIKE LOWER(CONCAT(c.nombre,' ',c.apellido)) ";
-		params.put("campoBusqueda", campoBusqueda.toLowerCase());
+		String where = "WHERE c.cedula LIKE :campoBusqueda OR LOWER(CONCAT(c.nombre,' ',c.apellido)) LIKE LOWER( '%'||:campoBusqueda||'%' ) ";
+		params.put("campoBusqueda", campoBusqueda);
 
 		try {
 			long numerOrden = Long.parseLong(campoBusqueda);
@@ -36,15 +34,15 @@ public class OrdenRepositoryImpl implements OrdenRepositoryCustom {
 			params.put("numerOrden", numerOrden);
 		} catch (NumberFormatException e) {
 			System.out.println("No es un numero de Orden.");
-			e.printStackTrace();
 		}
 
 		consulta += where;
+
 		Query query = entityManager.createQuery(consulta);
 		params.forEach((k, v) -> query.setParameter(k, v));
 
-		List<Orden> resultados= query.getResultList();
-		
+		List<Orden> resultados = query.getResultList();
+
 		return resultados;
 	}
 

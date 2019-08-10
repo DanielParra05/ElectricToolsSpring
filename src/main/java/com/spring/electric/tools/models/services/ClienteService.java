@@ -8,13 +8,20 @@ import com.spring.electric.tools.models.entities.Cliente;
 
 public interface ClienteService {
 
-	public List<Cliente> findAll();
+	List<Cliente> findAll();
 	
-	public Cliente findById(Long id);
+	Cliente findById(Long id);
 	
-	public Cliente save(Cliente cliente);
+	Cliente save(Cliente cliente);
 	
-	public void delete (Long id);
+	void delete (Long id);
+	
+	/**
+	 * Buscar un cliente segun por cedula o nombre
+	 * @param campoBusqueda cadena enviada para buscar como coincidencia
+	 * @return Lista con los clientes que coincidieron
+	 */
+	List<Cliente> buscarCliente (String campoBusqueda);
 	
 	
 }

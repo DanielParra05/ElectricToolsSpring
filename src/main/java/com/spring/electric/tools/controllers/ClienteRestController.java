@@ -36,6 +36,19 @@ public class ClienteRestController {
 	}
 
 	/**
+	 * Buscar cliente por el parametro enviado
+	 * 
+	 * @param campoBusqueda cadena a buscar entre los atributos de los clientes
+	 * @return Lista de clientes que coincidan
+	 */
+	@GetMapping("/clientes/busqueda/{campoBusqueda}")
+	public List<Cliente> buscarClientes(@PathVariable String campoBusqueda) {
+
+		return clienteService.buscarCliente(campoBusqueda);
+
+	}
+
+	/**
 	 * obtiene un cliente
 	 * 
 	 * @param id => cliente a mostrar

@@ -7,37 +7,44 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.electric.tools.models.entities.Cliente;
-import com.spring.electric.tools.models.repositories.IClienteDAO;
+import com.spring.electric.tools.models.repositories.ClientesRepository;
 
 
 @Service
 public class ClienteServiceImpl implements ClienteService{
 
 	@Autowired
-	private IClienteDAO clienteDAO;	
+	private ClientesRepository clienteRepository;	
 	
 	@Override
 	@Transactional(readOnly=true)
 	public List<Cliente> findAll() {
-		return (List<Cliente>)clienteDAO.findAll();
+		return (List<Cliente>)clienteRepository.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly=true)
 	public Cliente findById(Long id) {
-		return clienteDAO.findById(id).orElse(null);
+		return clienteRepository.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional
 	public Cliente save(Cliente cliente) {
-		return clienteDAO.save(cliente);
+		return clienteRepository.save(cliente);
 	}
 
 	@Override
 	@Transactional
 	public void delete(Long id) {
-		clienteDAO.deleteById(id);
+		clienteRepository.deleteById(id);
 	}
+
+	@Override
+	public List<Cliente> buscarCliente(String campoBusqueda) {
+		return clienteRepository.buscarCliente(campoBusqueda);
+	}
+	
+	
 }
 

@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.spring.electric.tools.models.entities.Ajustes;
 
-public interface IAjustesDAO  extends CrudRepository<Ajustes, Long> {
+public interface AjustesRepository  extends CrudRepository<Ajustes, Long> {
 	
 }

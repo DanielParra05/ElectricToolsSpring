@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.electric.tools.models.entities.Ajustes;
-import com.spring.electric.tools.models.repositories.IAjustesDAO;
+import com.spring.electric.tools.models.repositories.AjustesRepository;
 
 @Service
 public class AjustesServiceImpl implements AjustesService {
 
 	@Autowired
-	private IAjustesDAO ajustesDAO;
+	private AjustesRepository ajustesDAO;
 
 	/**
 	 * Retorna la fila de ajustes existente, si no existe la crea
