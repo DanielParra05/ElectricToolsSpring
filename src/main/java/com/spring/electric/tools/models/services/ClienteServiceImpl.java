@@ -44,6 +44,11 @@ public class ClienteServiceImpl implements ClienteService{
 	public List<Cliente> buscarCliente(String campoBusqueda) {
 		return clienteRepository.buscarCliente(campoBusqueda);
 	}
+
+	@Override
+	public Cliente findByCedula(String cedula) {
+		return clienteRepository.findByCedula(cedula);
+	}
 	
 	
 }

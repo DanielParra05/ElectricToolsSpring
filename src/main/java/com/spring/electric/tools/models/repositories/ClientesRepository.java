@@ -12,4 +12,6 @@ public interface ClientesRepository extends CrudRepository<Cliente, Long> {
 	@Query("SELECT c FROM Cliente c WHERE c.cedula LIKE ?1 OR LOWER(CONCAT(c.nombre,' ',c.apellido)) LIKE LOWER( '%'||?1||'%' )")
 	List <Cliente> buscarCliente (String campoBusqueda);
 	
+	Cliente findByCedula(String cedula);
+	
 }

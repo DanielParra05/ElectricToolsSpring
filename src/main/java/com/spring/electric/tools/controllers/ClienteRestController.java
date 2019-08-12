@@ -84,17 +84,22 @@ public class ClienteRestController {
 
 		Cliente clienteNew = null;
 		Map<String, Object> response = new HashMap<>();
-		try {
-			clienteNew = clienteService.save(cliente);
-		} catch (DataAccessException e) {
-			response.put("mensaje", "Error");
-			response.put("error", e.getMessage() + ": " + e.getMostSpecificCause().getMessage());
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		if (clienteService.findByCedula(cliente.getCedula()) == null) {
+			try {
+				clienteNew = clienteService.save(cliente);
+			} catch (DataAccessException e) {
+				response.put("mensaje", "Error");
+				response.put("error", e.getMessage() + ": " + e.getMostSpecificCause().getMessage());
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 
-		response.put("mensaje", "El cliente ha sido creado con exito");
-		response.put("cliente", clienteNew);
-		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+			response.put("mensaje", "El cliente ha sido creado con exito");
+			response.put("cliente", clienteNew);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		} else {
+			response.put("mensaje", "Un cliente con esta cedula ya existe en la base de datos.");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CONFLICT);
+		}
 	}
 
 	/**

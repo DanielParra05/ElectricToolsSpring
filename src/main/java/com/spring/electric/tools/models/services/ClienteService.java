@@ -16,6 +16,8 @@ public interface ClienteService {
 	
 	void delete (Long id);
 	
+	Cliente findByCedula(String cedula); 
+	
 	/**
 	 * Buscar un cliente segun por cedula o nombre
 	 * @param campoBusqueda cadena enviada para buscar como coincidencia
