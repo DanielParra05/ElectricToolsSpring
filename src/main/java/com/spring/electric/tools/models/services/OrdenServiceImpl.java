@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.electric.tools.models.entities.Orden;
 import com.spring.electric.tools.models.repositories.OrdenRepository;
-import com.spring.electric.tools.models.repositories.custom.OrdenRepositoryCustom;
 
 @Transactional
 @Service

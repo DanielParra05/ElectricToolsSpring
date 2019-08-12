@@ -1,7 +1,5 @@
 package com.spring.electric.tools.controllers;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.electric.tools.converters.DateConverter;
 import com.spring.electric.tools.models.entities.Orden;
 import com.spring.electric.tools.models.services.OrdenServiceImpl;
 
@@ -31,8 +30,8 @@ public class ContabilidadRestController {
 	@GetMapping("/contabilidad/{fechaEntrada}/{fechaSalida}")
 	public List<Orden> getContabilidad(@PathVariable String fechaEntrada, @PathVariable String fechaSalida) {
 	
-		return	ordenService.getContabilidad(convertToLocalDate(fechaEntrada),
-		 convertToLocalDate(fechaSalida));
+		return	ordenService.getContabilidad(DateConverter.convertToLocalDate(fechaEntrada),
+				DateConverter.convertToLocalDate(fechaSalida));
 	
 	}
 
@@ -44,8 +43,8 @@ public class ContabilidadRestController {
 	@GetMapping("/arreglos/{fechaEntrada}/{fechaSalida}")
 	public Integer getValorArreglosTotal(@PathVariable String fechaEntrada, @PathVariable String fechaSalida) {
 
-		return ordenService.getValorArreglosTotal(convertToLocalDate(fechaEntrada),
-				convertToLocalDate(fechaSalida));
+		return ordenService.getValorArreglosTotal(DateConverter.convertToLocalDate(fechaEntrada),
+				DateConverter.convertToLocalDate(fechaSalida));
 	}
 
 	/**
@@ -56,23 +55,11 @@ public class ContabilidadRestController {
 	@GetMapping("/repuestos/{fechaEntrada}/{fechaSalida}")
 	public Integer getValorRepuestosTotal(@PathVariable String fechaEntrada, @PathVariable String fechaSalida) {
 
-		return ordenService.getValorRepuestosTotal(convertToLocalDate(fechaEntrada),
-				convertToLocalDate(fechaSalida));
+		return ordenService.getValorRepuestosTotal(DateConverter.convertToLocalDate(fechaEntrada),
+				DateConverter.convertToLocalDate(fechaSalida));
 	}
 
 	
-	/**
-	 * Convertidor de fechas
-	 * 
-	 * @param dateToConvert
-	 * @return
-	 */
-	public LocalDate convertToLocalDate(String dateToConvert) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/d");
-		String date = dateToConvert.replace('-', '/');
-		// convert String to LocalDate
-		LocalDate lD = LocalDate.parse(date, formatter);
-		return lD;
-	}
+	
 
 }
