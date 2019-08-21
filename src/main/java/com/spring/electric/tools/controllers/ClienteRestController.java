@@ -56,10 +56,10 @@ public class ClienteRestController {
 	}
 
 	/**
-	 * obtiene un cliente
+	 * Obtener un cliente
 	 * 
-	 * @param id => cliente a mostrar
-	 * @return
+	 * @param id id del cliente a mostrar
+	 * @return cliente encontrado
 	 */
 	@GetMapping("/clientes/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
@@ -81,7 +81,7 @@ public class ClienteRestController {
 	}
 
 	/**
-	 * Crea un nuevo cliente
+	 * Crear un nuevo cliente
 	 * 
 	 * @param cliente => cliente a insertar en la BD
 	 * @return
@@ -110,7 +110,7 @@ public class ClienteRestController {
 	}
 
 	/**
-	 * Actualiza los clientes segun un cliente enviado
+	 * Actualizar los clientes segun un cliente enviado
 	 * 
 	 * @param cliente => Cliente con los nuevos datos
 	 * @param id      => id del cliente a actualizar
@@ -146,7 +146,7 @@ public class ClienteRestController {
 	}
 
 	/**
-	 * Elimina los clientes segun un id enviado
+	 * Eliminar los clientes segun un id enviado
 	 * 
 	 * @param id => id del cliente a borrar
 	 * @return
