@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +29,8 @@ import com.spring.electric.tools.models.services.ClienteServiceImpl;
 @RequestMapping("/api")
 public class ClienteRestController {
 
+	private static final int PAGINATOR_SIZE = 3;
+	
 	@Autowired
 	private ClienteServiceImpl clienteService;
 
@@ -35,6 +39,11 @@ public class ClienteRestController {
 		return clienteService.findAll();
 	}
 
+	@GetMapping("/clientes/page/{page}")
+	public Page<Cliente> index(@PathVariable Integer page) {
+		return clienteService.findAll(PageRequest.of(page, PAGINATOR_SIZE));
+	}
+	
 	/**
 	 * Buscar cliente por el parametro enviado
 	 * 
@@ -43,9 +52,7 @@ public class ClienteRestController {
 	 */
 	@GetMapping("/clientes/busqueda/{campoBusqueda}")
 	public List<Cliente> buscarClientes(@PathVariable String campoBusqueda) {
-
 		return clienteService.buscarCliente(campoBusqueda);
-
 	}
 
 	/**
