@@ -29,7 +29,7 @@ import com.spring.electric.tools.models.services.ClienteServiceImpl;
 @RequestMapping("/api")
 public class ClienteRestController {
 
-	private static final int PAGINATOR_SIZE = 3;
+	private static final int PAGINATOR_SIZE = 5;
 	
 	@Autowired
 	private ClienteServiceImpl clienteService;
@@ -46,13 +46,13 @@ public class ClienteRestController {
 	
 	/**
 	 * Buscar cliente por el parametro enviado
-	 * 
 	 * @param campoBusqueda cadena a buscar entre los atributos de los clientes
-	 * @return Lista de clientes que coincidan
+	 * @param page pagina pedida desde el front
+	 * @return pagina con los clientes que coincidan
 	 */
-	@GetMapping("/clientes/busqueda/{campoBusqueda}")
-	public List<Cliente> buscarClientes(@PathVariable String campoBusqueda) {
-		return clienteService.buscarCliente(campoBusqueda);
+	@GetMapping("/clientes/busqueda/{campoBusqueda}/{page}")
+	public Page<Cliente> buscarClientes(@PathVariable String campoBusqueda, @PathVariable Integer page) {
+		return clienteService.buscarCliente(campoBusqueda, PageRequest.of(page, PAGINATOR_SIZE));
 	}
 
 	/**

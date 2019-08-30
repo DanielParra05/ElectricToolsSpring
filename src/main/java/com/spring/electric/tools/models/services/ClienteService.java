@@ -34,6 +34,6 @@ public interface ClienteService {
 	 * @param campoBusqueda cadena enviada para buscar como coincidencia
 	 * @return Lista con los clientes que coincidieron
 	 */
-	List<Cliente> buscarCliente(String campoBusqueda);
+	Page<Cliente> buscarCliente(String campoBusqueda, Pageable pageable);
 
 }
