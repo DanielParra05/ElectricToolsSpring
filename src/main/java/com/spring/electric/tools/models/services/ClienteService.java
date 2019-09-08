@@ -19,6 +19,8 @@ public interface ClienteService {
 	 * @return lista de paginador
 	 */
 	Page<Cliente> findAll(Pageable pageable);
+	
+	Page<Cliente> index(Pageable pageable, String campoBusqueda);
 
 	Cliente findById(Long id);
 

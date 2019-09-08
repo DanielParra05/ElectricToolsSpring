@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.electric.tools.models.entities.Cliente;
@@ -29,7 +30,7 @@ import com.spring.electric.tools.models.services.ClienteServiceImpl;
 @RequestMapping("/api")
 public class ClienteRestController {
 
-	private static final int PAGINATOR_SIZE = 5;
+	private static final int PAGINATOR_SIZE = 2;
 	
 	@Autowired
 	private ClienteServiceImpl clienteService;
@@ -40,8 +41,9 @@ public class ClienteRestController {
 	}
 
 	@GetMapping("/clientes/page/{page}")
-	public Page<Cliente> index(@PathVariable Integer page) {
-		return clienteService.findAll(PageRequest.of(page, PAGINATOR_SIZE));
+	public Page<Cliente> index(@PathVariable Integer page, @RequestParam(required = false) String campoBusqueda) {
+		
+		return clienteService.index(PageRequest.of(page, PAGINATOR_SIZE), campoBusqueda);
 	}
 	
 	/**

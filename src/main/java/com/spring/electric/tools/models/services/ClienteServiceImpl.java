@@ -57,6 +57,15 @@ public class ClienteServiceImpl implements ClienteService{
 	public Page<Cliente> findAll(Pageable pageable) {
 		return clienteRepository.findAll(pageable);
 	}
+
+	@Override
+	public Page<Cliente> index(Pageable pageable, String campoBusqueda) {
+		if (campoBusqueda == null) {
+			return clienteRepository.findAll(pageable);
+		}else {
+			return clienteRepository.buscarCliente(campoBusqueda, pageable);
+		}
+	}
 	
 	
 }
