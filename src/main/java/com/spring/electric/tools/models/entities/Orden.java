@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.electric.tools.models.enums.OrdenEstado;
@@ -42,7 +41,6 @@ public class Orden implements Serializable {
 	@Column(name = "OBSERVACIONES")
 	private String observaciones;
 	
-	@NotNull(message="cliente vacio")
 	@ManyToOne(fetch = FetchType.LAZY) // Genera un proxy hacia la clase cliente
 	@JoinColumn(name = "CLIENTE_ID")
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) // Se ignoran en el JSON los atributos generados
