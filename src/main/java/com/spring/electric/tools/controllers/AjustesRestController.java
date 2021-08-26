@@ -7,27 +7,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.electric.tools.models.entities.Ajustes;
 import com.spring.electric.tools.models.services.AjustesServiceImpl;
 
-@RestController
-@RequestMapping("/api")
+@Controller
 public class AjustesRestController {
 
 	@Autowired
 	private AjustesServiceImpl ajusteService;
 	
 	@GetMapping("/ajustes")
-	public Ajustes getAjuste() {
-		return ajusteService.getAjuste();
-	}
-	
+	public String getAjuste(Model model) {
+		model.addAttribute("titulo", "Si, wenas");
+		return "index";
+	}	
 	
 	@PostMapping("/ajustes")
 	public ResponseEntity<?> create(@RequestBody Ajustes ajuste) {
