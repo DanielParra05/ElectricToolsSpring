@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8"/>
-<title th:text="${titulo}">Insert title here</title>
-</head>
+<head th:replace="layout/layout :: head"> </head>
 <body>
+
+<header th:replace="layout/layout :: header"></header>
 
 <h1 th:text="${titulo}"></h1>
 <h2>Aca es una muesttra de que cogio la plantilla</h2>
+
+<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

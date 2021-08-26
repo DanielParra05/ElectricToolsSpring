@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.spring.electric.tools.models.entities.Ajustes;
-import com.spring.electric.tools.models.services.AjustesServiceImpl;
+import com.spring.electric.tools.models.services.AjustesService;
 
 @Controller
 public class AjustesRestController {
 
 	@Autowired
-	private AjustesServiceImpl ajusteService;
+	private AjustesService ajusteService;
 	
 	@GetMapping("/ajustes")
 	public String getAjuste(Model model) {
 		model.addAttribute("titulo", "Si, wenas");
-		return "index";
+		return "listar";
 	}	
 	
 	@PostMapping("/ajustes")

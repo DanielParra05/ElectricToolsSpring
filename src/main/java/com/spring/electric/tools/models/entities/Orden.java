@@ -18,13 +18,14 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.electric.tools.models.enums.OrdenEstado;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "ORDENES")
+@Getter @Setter
 public class Orden implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -70,112 +71,5 @@ public class Orden implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name="ESTADO", nullable=false)
 	private OrdenEstado estado;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public LocalDate getFechaEntrada() {
-		return fechaEntrada;
-	}
-
-	public void setFechaEntrada(LocalDate fechaEntrada) {
-		this.fechaEntrada = fechaEntrada;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public String getNombreArticulo() {
-		return nombreArticulo;
-	}
-
-	public void setNombreArticulo(String nombreArticulo) {
-		this.nombreArticulo = nombreArticulo;
-	}
-
-	public String getMarcaArticulo() {
-		return marcaArticulo;
-	}
-
-	public void setMarcaArticulo(String marcaArticulo) {
-		this.marcaArticulo = marcaArticulo;
-	}
-
-	public String getModeloArticulo() {
-		return modeloArticulo;
-	}
-
-	public void setModeloArticulo(String modeloArticulo) {
-		this.modeloArticulo = modeloArticulo;
-	}
-
-	public String getSerialArticulo() {
-		return serialArticulo;
-	}
-
-	public void setSerialArticulo(String serialArticulo) {
-		this.serialArticulo = serialArticulo;
-	}
-
-	public String getProblemaReportado() {
-		return problemaReportado;
-	}
-
-	public void setProblemaReportado(String problemaReportado) {
-		this.problemaReportado = problemaReportado;
-	}
-
-	public LocalDate getFechaSalida() {
-		return fechaSalida;
-	}
-
-	public void setFechaSalida(LocalDate fechaSalida) {
-		this.fechaSalida = fechaSalida;
-	}
-
-	public String getObservaciones() {
-		return observaciones;
-	}
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
-	}
-
-	public Integer getValorArreglo() {
-		return valorArreglo;
-	}
-
-	public void setValorArreglo(Integer valorArreglo) {
-		this.valorArreglo = valorArreglo;
-	}
-
-	public Integer getValorRepuestos() {
-		return valorRepuestos;
-	}
-
-	public void setValorRepuestos(Integer valorRepuestos) {
-		this.valorRepuestos = valorRepuestos;
-	}
-
-	public OrdenEstado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(OrdenEstado estado) {
-		this.estado = estado;
-	}
-
-	
-	
 	
 }
