@@ -19,12 +19,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.electric.tools.models.entities.Cliente;
 import com.spring.electric.tools.models.services.ClienteServiceImpl;
 
 @Controller
+@RequestMapping("/gestion-clientes")
 public class ClienteRestController {
 
 	private static final int PAGINATOR_SIZE = 2;
@@ -36,7 +38,7 @@ public class ClienteRestController {
 	public String index(Model model) {
 		List<Cliente> clientes = clienteService.findAll();
 		model.addAttribute("clientes", clientes);
-		return "clientes";
+		return "gestion-clientes/clientes";
 	}
 
 	@GetMapping("/clientes/page/{page}")
