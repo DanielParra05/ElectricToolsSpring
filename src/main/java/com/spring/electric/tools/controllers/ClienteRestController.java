@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelExtensionsKt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,26 +28,28 @@ import com.spring.electric.tools.models.services.ClienteServiceImpl;
 public class ClienteRestController {
 
 	private static final int PAGINATOR_SIZE = 2;
-	
+
 	@Autowired
 	private ClienteServiceImpl clienteService;
 
 	@GetMapping("/clientes")
-	public String index() {
-		clienteService.findAll();
+	public String index(Model model) {
+		List<Cliente> clientes = clienteService.findAll();
+		model.addAttribute("clientes", clientes);
 		return "clientes";
 	}
 
 	@GetMapping("/clientes/page/{page}")
 	public Page<Cliente> index(@PathVariable Integer page, @RequestParam(required = false) String campoBusqueda) {
-		
+
 		return clienteService.index(PageRequest.of(page, PAGINATOR_SIZE), campoBusqueda);
 	}
-	
+
 	/**
 	 * Buscar cliente por el parametro enviado
+	 * 
 	 * @param campoBusqueda cadena a buscar entre los atributos de los clientes
-	 * @param page pagina pedida desde el front
+	 * @param page          pagina pedida desde el front
 	 * @return pagina con los clientes que coincidan
 	 */
 	@GetMapping("/clientes/busqueda/{campoBusqueda}/{page}")
