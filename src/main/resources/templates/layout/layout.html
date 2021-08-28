@@ -2,102 +2,68 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="head">
-	<meta charset="UTF-8" />
-	<title>Herramientas Electricas</title>
-	<link rel="icon" type="image/x-icon" th:href="@{/css/bootstrap.min.css}">
-	<meta name="description" content="">
+<meta charset="UTF-8" />
+<title>Herramientas Electricas</title>
+<link rel="icon" type="image/x-icon" th:href="@{/css/bootstrap.min.css}">
+<meta name="description" content="">
 
-	<!--Bootsrap 5 CSS-->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+<!--Bootsrap 5 CSS-->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/styles.css}" />
 </head>
 
 <body>
 	<header th:fragment="header">
-		<nav class="bg-dark navbar navbar-expand-lg navbar-dark">
-			<a class="navbar-brand" href="#">Herramientas Electricas</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<!--OPCIONES-->
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ordenes
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="/ordenes">Gestión de Ordenes</a> <a class="dropdown-item"
-								href="/ordenes/form">Nueva Orden</a>
-						</div>
-					</li>
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Clientes
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="/clientes">Gestión de clientes</a>
-							<a class="dropdown-item" href="/clientes/form">Nuevo Cliente</a>
-						</div>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="/ajustes">Ajustes</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="/contabilidad">Contabilidad</a>
-					</li>
-
-				</ul>
-			</div>
-		</nav>
-
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Navbar scroll</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-					aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+				<a class="navbar-brand" href="/tools-app">Herramientas Electricas</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+					aria-controls="navbarScroll" aria-expanded="false"
+					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarScroll">
-					<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								Link
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
-						</li>
+					<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+						style="-bs-scroll-height: 100px;">
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarScrollingDropdown" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Clientes </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarScrollingDropdown">
+								<li><a class="dropdown-item" href="/tools-app/gestion-clientes/clientes">Gestion Clientes</a></li>
+								<li><a class="dropdown-item" href="#">Nuevo Cliente</a></li>
+							</ul></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
+							id="navbarScrollingDropdown" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Ordenes </a>
+							<ul class="dropdown-menu"
+								aria-labelledby="navbarScrollingDropdown">
+								<li><a class="dropdown-item" href="#">Gestion de
+										Ordenes</a></li>
+								<li><a class="dropdown-item" href="#">Nueva Orden</a></li>
+							</ul></li>
+						<li class="nav-item"><a class="nav-link" href="#">Ajustes</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Contabilidad</a></li>
 					</ul>
 					<form class="d-flex">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<input class="form-control me-2" type="search"
+							placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success" type="submit">Search</button>
 					</form>
 				</div>
 			</div>
 		</nav>
-
 	</header>
-
-	<div class="container"></div>
 
 	<footer th:fragment="footer">
 		<!-- Versiones de  JS necesarias para componentes de Bootstrap-->
-		<script th:src="@{/js/popper.min.js}">
+		<script th:src="@{/js/bootstrap.bundle.min.js}">			
 		</script>
-		<script th:src="@{/js/bootstrap.min.js}"> </script>
 	</footer>
 </body>
-
 </html>
