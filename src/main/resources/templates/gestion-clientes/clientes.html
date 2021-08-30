@@ -7,20 +7,17 @@
 <body>
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container">
-		<div class="card border-light"
-			style="margin-bottom: 2%; margin-top: 0.5%;">
+		<div class="card border-light" style="margin-bottom: 2%; margin-top: 0.5%;">
 			<div class="card-header">
-				<h3>Gestion de Clientes</h3>
+				<h4>Gestion de Clientes</h4>
 			</div>
 			<div class="card-body text-primary">
 				<div class="my-2 text-center">
-					<button class="btn btn-primary btn-lg" type="button">Nuevo
-						Cliente</button>
+					<a class="btn btn-primary btn-lg" href="/tools-app/gestion-clientes/registrar-cliente">Nuevo Cliente</a>
 				</div>
 				<br />
 				<div class="input-group">
-					<input type="text" class="form-control"
-						placeholder="(Nombre o C&#233;dula)"
+					<input type="text" class="form-control" placeholder="(Nombre o C&#233;dula)"
 						aria-label="Recipient's username with two button addons">
 					<button class="btn btn-outline-success" type="button">Buscar</button>
 					<button class="btn btn-outline-danger" type="button">Limpiar</button>
@@ -57,11 +54,11 @@
 									<div class="row">
 										<div class="col text-center">
 											<a style="cursor: pointer"><img class="img-fluid"
-												th:src="@{/images/iconos/pencil.png}" /></a>
+													th:src="@{/images/iconos/pencil.png}" /></a>
 										</div>
 										<div class="col text-center">
 											<a style="cursor: pointer"><img class="img-fluid"
-												th:src="@{/images/iconos/trash-bin.png}" /></a>
+													th:src="@{/images/iconos/trash-bin.png}" /></a>
 										</div>
 									</div>
 								</td>

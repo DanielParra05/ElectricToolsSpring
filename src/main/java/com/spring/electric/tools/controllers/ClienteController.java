@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelExtensionsKt;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +26,7 @@ import com.spring.electric.tools.models.services.ClienteServiceImpl;
 
 @Controller
 @RequestMapping("/gestion-clientes")
-public class ClienteRestController {
+public class ClienteController {
 
 	private static final int PAGINATOR_SIZE = 2;
 
@@ -35,11 +34,24 @@ public class ClienteRestController {
 	private ClienteServiceImpl clienteService;
 
 	@GetMapping("/clientes")
-	public String index(Model model) {
+	public String listarClientes(Model model) {
 		List<Cliente> clientes = clienteService.findAll();
 		model.addAttribute("clientes", clientes);
 		return "gestion-clientes/clientes";
 	}
+	
+	@GetMapping("/registrar-cliente")
+	public String registrarClienteView() {
+		return "gestion-clientes/registrar-cliente";
+	}
+	
+	@PostMapping("/registrar-cliente")
+	public String registrarClienteAction(Model model, Cliente cliente) {
+		clienteService.save(cliente);
+		return this.listarClientes(model);
+	}
+	
+	
 
 	@GetMapping("/clientes/page/{page}")
 	public Page<Cliente> index(@PathVariable Integer page, @RequestParam(required = false) String campoBusqueda) {

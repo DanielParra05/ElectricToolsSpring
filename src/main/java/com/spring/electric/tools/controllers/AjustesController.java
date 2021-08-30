@@ -17,7 +17,7 @@ import com.spring.electric.tools.models.entities.Ajustes;
 import com.spring.electric.tools.models.services.AjustesService;
 
 @Controller
-public class AjustesRestController {
+public class AjustesController {
 
 	@Autowired
 	private AjustesService ajusteService;

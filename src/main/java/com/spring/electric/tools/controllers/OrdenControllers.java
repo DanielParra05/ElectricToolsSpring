@@ -23,7 +23,7 @@ import com.spring.electric.tools.models.services.OrdenServiceImpl;
 
 @RestController
 @RequestMapping("/api")
-public class OrdenRestControllers {
+public class OrdenControllers {
 
 	@Autowired
 	private OrdenServiceImpl ordenService;
