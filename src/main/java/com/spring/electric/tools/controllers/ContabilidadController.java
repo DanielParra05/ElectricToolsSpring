@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.electric.tools.converters.DateConverter;
 import com.spring.electric.tools.models.entities.Orden;
-import com.spring.electric.tools.models.services.OrdenServiceImpl;
+import com.spring.electric.tools.models.services.OrdenService;
 
 @RestController
 @RequestMapping("/api")
 public class ContabilidadController {
 
 	@Autowired
-	private OrdenServiceImpl ordenService;
+	private OrdenService ordenService;
 
 	/**
 	 * Obtener ordenes que tiene fechaEntrada/fechaSalida dentro del rango

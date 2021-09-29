@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.electric.tools.models.entities.Cliente;
-import com.spring.electric.tools.models.services.ClienteServiceImpl;
+import com.spring.electric.tools.models.services.ClienteService;
 
 @Controller
 @RequestMapping("/gestion-clientes")
@@ -31,7 +31,7 @@ public class ClienteController {
 	private static final int PAGINATOR_SIZE = 2;
 
 	@Autowired
-	private ClienteServiceImpl clienteService;
+	private ClienteService clienteService;
 
 	@GetMapping("/clientes")
 	public String listarClientes(Model model) {
