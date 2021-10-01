@@ -13,31 +13,27 @@
 				<h4>Nuevo Cliente</h4>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/gestion-clientes/registrar-cliente}" method="POST">
+				<form th:action="@{/gestion-clientes/registrar-cliente}" th:object="${cliente}" method="POST">
 					<div class="container">
 						<div class="row">
 							<div class=" col-sm">
 								<label for="nombre" style="font-weight: bold;" class="col-form-label">Nombre:</label>
-								<div class="col-sm-6"></div>
-								<input type="text" class="form-control" name="nombre">
+								<input id="nombre" type="text" class="form-control" th:field="*{nombre}" required>
 							</div>
 							<div class=" col-sm">
 								<label for="apellido" style="font-weight: bold;"
 									class="col-form-label">Apellido:</label>
-								<div class="col-sm-6"></div>
-								<input type="text" class="form-control" name="apellido">
+								<input id="apellido" type="text" class="form-control" th:field="*{apellido}" required>
 							</div>
 						</div>
 						<div class="row">
 							<div class=" col-sm">
-								<label for="cedula" style="font-weight: bold;" class="col-form-label">Cedula:</label>
-								<div class="col-sm-6"></div>
-								<input type="number" class="form-control" name="cedula">
+								<label for="cedula" style="font-weight: bold;" class="col-form-label">Cedula:</label>								
+								<input id="cedula" type="number" class="form-control" th:field="*{cedula}" required>
 							</div>
 							<div class=" col-sm">
 								<label style="font-weight: bold;" for="telefono" class="col-form-label">Celular:</label>
-								<div class="col-sm-6"></div>
-								<input type="text" class="form-control" name="telefono">
+								<input id="telefono" type="number" class="form-control" th:field="*{telefono}" required>
 							</div>
 						</div>
 						<div class="row">

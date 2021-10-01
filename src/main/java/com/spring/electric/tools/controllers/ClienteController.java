@@ -41,7 +41,8 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/registrar-cliente")
-	public String registrarClienteView() {
+	public String registrarClienteView(Model model) {
+		model.addAttribute("cliente", new Cliente());
 		return "gestion-clientes/registrar-cliente";
 	}
 	
@@ -51,11 +52,8 @@ public class ClienteController {
 		return this.listarClientes(model);
 	}
 	
-	
-
 	@GetMapping("/clientes/page/{page}")
 	public Page<Cliente> index(@PathVariable Integer page, @RequestParam(required = false) String campoBusqueda) {
-
 		return clienteService.index(PageRequest.of(page, PAGINATOR_SIZE), campoBusqueda);
 	}
 
