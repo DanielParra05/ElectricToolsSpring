@@ -13,8 +13,7 @@ public class ClienteValidator implements Validator {
 
 	@Autowired
 	ClienteService clienteService;
-	
-	
+
 	@Override
 	public boolean supports(Class<?> clazz) {
 		// Se valida si el objeto que esta pasando corresponde al tipo cliente
@@ -23,10 +22,12 @@ public class ClienteValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		Cliente cliente = (Cliente) target;		
-		if (clienteService.findByCedula(cliente.getCedula()) != null) {
-			errors.rejectValue("cedula", "repetida.cedula.cliente");
-		}		
-	}
+		Cliente customerToValidate = (Cliente) target;
+		Cliente customerToFound = clienteService.findByCedula(customerToValidate.getCedula());
 
+		if (customerToFound != null
+				&& (customerToValidate.getId() == null || customerToFound.getId() != customerToValidate.getId())) {
+			errors.rejectValue("cedula", "cedula.cliente.repetida");
+		}
+	}
 }
