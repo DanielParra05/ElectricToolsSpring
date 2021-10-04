@@ -1,13 +1,11 @@
 package com.spring.electric.tools.controllers;
 
-import java.lang.ProcessBuilder.Redirect;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.electric.tools.models.entities.Cliente;
 import com.spring.electric.tools.models.services.ClienteService;
+import com.spring.electric.tools.utils.PageRender;
 import com.spring.electric.tools.validators.ClienteValidator;
 
 @Controller
@@ -31,7 +30,7 @@ import com.spring.electric.tools.validators.ClienteValidator;
 @SessionAttributes("cliente")
 public class ClienteController {
 
-	private static final int PAGINATOR_SIZE = 2;
+	private static final int PAGINATOR_SIZE = 5;
 
 	@Autowired
 	private ClienteService clienteService;
@@ -44,10 +43,14 @@ public class ClienteController {
 		binder.addValidators(clienteValidador);
 	}
 
-	@GetMapping("/clientes")
-	public String listarClientes(Model model) {
-		List<Cliente> clientes = clienteService.findAll();
+	@GetMapping("/clientes")	
+	public String listarClientes(@RequestParam(name="page", defaultValue = "0") int page, Model model) {		
+		Pageable pageRequest = PageRequest.of(page, PAGINATOR_SIZE);
+		Page <Cliente> clientes = clienteService.findAll(pageRequest);		
+		PageRender<Cliente> pageRender = new PageRender<Cliente>("/gestion-clientes/clientes", clientes);		
+		
 		model.addAttribute("clientes", clientes);
+		model.addAttribute("page", pageRender);
 		return "gestion-clientes/clientes";
 	}
 
@@ -58,13 +61,15 @@ public class ClienteController {
 	}
 
 	@PostMapping("/registrar-cliente")
-	public String guardarCliente(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status) {
+	public String guardarCliente(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash,
+			SessionStatus status) {
 		if (result.hasErrors()) {
 			return "gestion-clientes/registrar-cliente";
 		}
+		flash.addFlashAttribute("success",
+				cliente.getId() != null ? "Cliente actualizado exitosamente!" : "Cliente registrado exitosamente!");
 		clienteService.save(cliente);
-		status.setComplete();
-		flash.addFlashAttribute("success", "Esto es para mostrar que todo ok");
+		status.setComplete();		
 		return "redirect:/gestion-clientes/clientes";
 	}
 
@@ -80,28 +85,18 @@ public class ClienteController {
 	}
 
 	@GetMapping("/eliminar-cliente/{id}")
-	public String eliminarCliente(@PathVariable Long id, Model model) {
+	public String eliminarCliente(@PathVariable Long id, Model model, RedirectAttributes flash) {
 		if (id > 0) {
 			clienteService.delete(id);
+			flash.addFlashAttribute("success","Cliente eliminado!");
 		}
 		return "redirect:/gestion-clientes/clientes";
 	}
 
-	@GetMapping("/clientes/page/{page}")
-	public Page<Cliente> index(@PathVariable Integer page, @RequestParam(required = false) String campoBusqueda) {
-		return clienteService.index(PageRequest.of(page, PAGINATOR_SIZE), campoBusqueda);
-	}
 
-	/**
-	 * Buscar cliente por el parametro enviado
-	 * 
-	 * @param campoBusqueda cadena a buscar entre los atributos de los clientes
-	 * @param page          pagina pedida desde el front
-	 * @return pagina con los clientes que coincidan
-	 */
-	@GetMapping("/clientes/busqueda/{campoBusqueda}/{page}")
-	public Page<Cliente> buscarClientes(@PathVariable String campoBusqueda, @PathVariable Integer page) {
-		return clienteService.buscarCliente(campoBusqueda, PageRequest.of(page, PAGINATOR_SIZE));
+	@GetMapping("/clientes/busqueda/{campoBusqueda}")
+	public Page<Cliente> buscarClientes(@PathVariable String campoBusqueda) {
+		return clienteService.buscarCliente(campoBusqueda, PageRequest.of(0, PAGINATOR_SIZE));
 	}
 
 }
