@@ -7,19 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.spring.electric.tools.models.entities.Cliente;
-import com.spring.electric.tools.models.services.ClienteService;
+import com.spring.electric.tools.models.entities.Customer;
+import com.spring.electric.tools.models.services.CustomerService;
 
 @Controller
 public class CoreController {
 
 	@Autowired
-	ClienteService clienteService;
+	CustomerService customerService;
 
 	@GetMapping("/index")
 	public String index(Model model) {
-		List<Cliente> clientes = clienteService.findAll();
-		model.addAttribute("clientes", clientes);
+		List<Customer> customers = customerService.findAll();
+		model.addAttribute("customers", customers);
 		return "index";
 	}
 }

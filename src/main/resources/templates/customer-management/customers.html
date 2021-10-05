@@ -10,18 +10,18 @@
 		<div class="card border-light"
 			style="margin-bottom: 2%; margin-top: 0.5%;">
 			<div class="card-header">
-				<h4>Gestion de Clientes</h4>
+				<h4>Gestion de customers</h4>
 			</div>
 			<div class="card-body text-primary">
 				<div class="my-2 text-center">
 					<a class="btn btn-primary btn-lg"
-						href="/tools-app/gestion-clientes/registrar-cliente">Nuevo
-						Cliente</a>
+						href="/tools-app/customer-management/customer-form">Nuevo
+						customer</a>
 				</div>
 				<br />
 				<div class="input-group">
 					<input type="text" class="form-control"
-						placeholder="(Nombre o C&#233;dula)"
+						placeholder="(name o C&#233;dula)"
 						aria-label="Recipient's username with two button addons">
 					<button class="btn btn-outline-success" type="button">Buscar</button>
 					<button class="btn btn-outline-danger" type="button">Limpiar</button>
@@ -31,10 +31,10 @@
 					<table id="table" class="table table-bordered table-striped">
 						<thead>
 							<tr class="align-middle" style="text-align: center">
-								<th>Nombre</th>
-								<th>Apellido</th>
+								<th>name</th>
+								<th>lastname</th>
 								<th>Cédula</th>
-								<th>Telefono</th>
+								<th>phone</th>
 								<th>
 									<div class="container">
 										<div class="row">
@@ -42,29 +42,29 @@
 										</div>
 										<div class="row" style="font-size: 70%;">
 											<div class="col">Editar</div>
-											<div class="col">Eliminar</div>
+											<div class="col">delete</div>
 										</div>
 									</div>
 								</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
-							<tr th:each="cliente : ${clientes}">
-								<td th:text="${cliente.nombre}" />
-								<td th:text="${cliente.apellido}" />
-								<td th:text="${cliente.cedula}" />
-								<td th:text="${cliente.telefono}" />
+							<tr th:each="customer : ${customers}">
+								<td th:text="${customer.name}" />
+								<td th:text="${customer.lastname}" />
+								<td th:text="${customer.identification}" />
+								<td th:text="${customer.phone}" />
 								<td>
 									<div class="row">
 										<div class="col text-center">
 											<a
-												th:href="@{/gestion-clientes/registrar-cliente/} + ${cliente.id}"
+												th:href="@{/customer-management/customer-form/} + ${customer.id}"
 												style="cursor: pointer"><img class="img-fluid"
 												th:src="@{/images/iconos/pencil.png}" /></a>
 										</div>
 										<div class="col text-center">
 											<a
-												th:href="@{/gestion-clientes/eliminar-cliente/} + ${cliente.id}"
+												th:href="@{/customer-management/delete-customer/} + ${customer.id}"
 												style="cursor: pointer"><img class="img-fluid"
 												th:src="@{/images/iconos/trash-bin.png}"
 												onclick="return confirm('¿Estás seguro?')" /></a>

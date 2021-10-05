@@ -7,8 +7,8 @@ public interface AjustesService {
 	 * Solo se usan estos metodos porque existe sola una fila
 	 * en la tabla de Ajustes
 	 */
-	public Ajustes getAjuste();
+	Ajustes getAjuste();
 
-	public Ajustes save(Ajustes ajuste);
+	Ajustes save(Ajustes ajuste);
 
 }

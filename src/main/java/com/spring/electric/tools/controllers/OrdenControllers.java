@@ -113,7 +113,7 @@ public class OrdenControllers {
 			ordenActual.setValorArreglo(orden.getValorArreglo());
 			ordenActual.setValorRepuestos(orden.getValorRepuestos());
 			ordenActual.setObservaciones(orden.getObservaciones());
-			ordenActual.setCliente(orden.getCliente());
+			ordenActual.setCustomer(orden.getCustomer());
 			ordenActual.setEstado(orden.getEstado());
 			ordenActualizada = ordenService.save(ordenActual);
 
@@ -151,7 +151,7 @@ public class OrdenControllers {
 		try {
 			ordenService.delete(id);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al eliminar en BD");
+			response.put("mensaje", "Error al delete en BD");
 			response.put("error", e.getMessage() + ": " + e.getMostSpecificCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}

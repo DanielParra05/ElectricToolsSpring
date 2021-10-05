@@ -7,21 +7,21 @@ import com.spring.electric.tools.models.entities.Orden;
 
 public interface OrdenService {
 	
-	public List<Orden> findAll();
+	List<Orden> findAll();
 	
-	public Orden findById(Long id);
+	Orden findById(Long id);
 	
-	public Orden save(Orden orden);
+	Orden save(Orden orden);
 	
-	public List<Orden> getContabilidad(LocalDate fechaEntrada, LocalDate fechaSalida);
+	List<Orden> getContabilidad(LocalDate fechaEntrada, LocalDate fechaSalida);
 	
-	public Integer getValorArreglosTotal(LocalDate fechaEntrada, LocalDate fechaSalida);
+	Integer getValorArreglosTotal(LocalDate fechaEntrada, LocalDate fechaSalida);
 	
-	public Integer getValorRepuestosTotal(LocalDate fechaEntrada, LocalDate fechaSalida);
+	Integer getValorRepuestosTotal(LocalDate fechaEntrada, LocalDate fechaSalida);
 	
-	public void delete (Long id);
+	void delete (Long id);
 	
-	public List<Orden> buscarOrden(String campoBusqueda);
+	List<Orden> buscarOrden(String campoBusqueda);
 	
 
 }

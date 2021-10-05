@@ -23,7 +23,7 @@ public class OrdenRepositoryImpl implements OrdenRepositoryCustom {
 		Map<String, Object> params = new HashMap<>();
 
 		// Construccion consulta JPQL
-		String consulta = "SELECT DISTINCT o from Orden o INNER JOIN Cliente c ON c.id = o.cliente ";
+		String consulta = "SELECT DISTINCT o from Orden o INNER JOIN customer c ON c.id = o.customer ";
 
 		String where = "WHERE c.cedula LIKE :campoBusqueda OR LOWER(CONCAT(c.nombre,' ',c.apellido)) LIKE LOWER( '%'||:campoBusqueda||'%' ) ";
 		params.put("campoBusqueda", campoBusqueda);

@@ -10,32 +10,32 @@
 	<div class="container">
 		<div class="card border-light" style="margin-bottom: 2%; margin-top: 0.5%;">
 			<div class="card-header">
-				<h4>Nuevo Cliente</h4>
+				<h4>Nuevo customer</h4>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/gestion-clientes/registrar-cliente}" th:object="${cliente}" method="POST">
+				<form th:action="@{/customer-management/customer-form}" th:object="${customer}" method="POST">
 					<div class="container">
 						<div class="row">
 							<div class=" col-sm">
-								<label for="nombre" style="font-weight: bold;" class="col-form-label">Nombre:</label>
-								<input id="nombre" type="text" class="form-control" th:field="*{nombre}" required>
+								<label for="name" style="font-weight: bold;" class="col-form-label">Nombre:</label>
+								<input id="name" type="text" class="form-control" th:field="*{name}" required>
 							</div>
 							<div class=" col-sm">
-								<label for="apellido" style="font-weight: bold;"
+								<label for="lastname" style="font-weight: bold;"
 									class="col-form-label">Apellido:</label>
-								<input id="apellido" type="text" class="form-control" th:field="*{apellido}" required>
+								<input id="lastname" type="text" class="form-control" th:field="*{lastname}" required>
 							</div>
 						</div>
 						<div class="row">
 							<div class=" col-sm">
-								<label for="cedula" style="font-weight: bold;" class="col-form-label">Cedula:</label>
-								<input id="cedula" type="number" class="form-control" th:field="*{cedula}" required>
-								<div  th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}" class="alert alert-danger" role="alert">
+								<label for="identification" style="font-weight: bold;" class="col-form-label">Cedula:</label>
+								<input id="identification" type="number" class="form-control" th:field="*{identification}" required>
+								<div  th:if="${#fields.hasErrors('identification')}" th:errors="*{identification}" class="alert alert-danger" role="alert">
 								</div>
 							</div>
 							<div class=" col-sm">
-								<label style="font-weight: bold;" for="telefono" class="col-form-label">Celular:</label>
-								<input id="telefono" type="number" class="form-control" th:field="*{telefono}" required>
+								<label style="font-weight: bold;" for="phone" class="col-form-label">Celular:</label>
+								<input id="phone" type="number" class="form-control" th:field="*{phone}" required>
 							</div>
 						</div>
 						<div class="row">

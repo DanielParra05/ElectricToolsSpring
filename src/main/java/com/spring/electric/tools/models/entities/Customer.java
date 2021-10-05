@@ -12,9 +12,9 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 @Entity
-@Table(name="CLIENTES")
+@Table(name="CUSTOMER")
 @Getter @Setter
-public class Cliente implements Serializable{
+public class Customer implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,16 +22,16 @@ public class Cliente implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "NOMBRE",nullable = false)
-	private String nombre;	
+	@Column(name = "NAME",nullable = false)
+	private String name;	
 	
-	@Column(name = "APELLIDO")
-	private String apellido;
+	@Column(name = "LASTNAME")
+	private String lastname;
 	
-	@Column(name="CEDULA")
-	private String cedula;
+	@Column(name="IDENTIFICATION")
+	private String identification;
 	
-	@Column(name="TELEFONO")
-	private String telefono;
+	@Column(name="PHONE")
+	private String phone;
 	
 }
