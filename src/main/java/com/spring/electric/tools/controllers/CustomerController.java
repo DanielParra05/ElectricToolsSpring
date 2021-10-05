@@ -40,7 +40,7 @@ public class CustomerController {
 
 	@InitBinder // Validator injection
 	public void initBinder(WebDataBinder binder) {
-		binder.addValidators(customerValidador);
+	//	binder.addValidators(customerValidador);
 	}
 
 	@GetMapping("/customers")	

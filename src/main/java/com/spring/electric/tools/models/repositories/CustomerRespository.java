@@ -9,7 +9,7 @@ import com.spring.electric.tools.models.entities.Customer;
 
 public interface CustomerRespository extends PagingAndSortingRepository<Customer, Long> {
 
-	@Query("SELECT c FROM Customer c WHERE c.identification LIKE ?1 OR LOWER(CONCAT(c.name,' ',c.lastname)) LIKE LOWER( '%'||?1||'%' )")
+	@Query("SELECT c FROM Customer c WHERE c.identification LIKE ?1 OR LOWER(CONCAT(c.name,' ',c.lastName)) LIKE LOWER( '%'||?1||'%' )")
 	Page <Customer> searchCustomer (String campoBusqueda, Pageable pageable);
 	
 	Customer findByIdentification(String cedula);

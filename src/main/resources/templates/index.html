@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/layout :: head">
+<head th:replace="fragments/layout :: head">
 </head>
 <body>
-	<header th:replace="layout/layout :: header"></header>
+	<header th:replace="fragments/layout :: header"></header>
 	
 	<main>
 		<div class="album py-5 bg-light">
@@ -11,7 +11,7 @@
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
 					<div class="col">
 						<div class="card h-100 text-center">
-							<img th:src="@{/images/home-img/ordenes.png}"
+							<img th:src="@{/images/home-img/orders.png}"
 								class="card-img-top" alt="ordenes">
 							<div class="card-body">
 								<h5 class="card-title">Gestion de Ordenes</h5>
@@ -19,7 +19,7 @@
 									salida de ordenes.</p>
 							</div>
 							<div class="card-footer">
-								<a href="/ordenes" class="btn btn-primary">Ingresar</a>
+								<a href="/tools-app/order-management/orders" class="btn btn-primary">Ingresar</a>
 							</div>
 						</div>
 					</div>
@@ -40,7 +40,7 @@
 					</div>
 					<div class="col">
 						<div class="card h-100 text-center">
-							<img th:src="@{/images/home-img/ajustes.png}"
+							<img th:src="@{/images/home-img/settings.png}"
 								class="card-img-top" alt="ajustes">
 							<div class="card-body">
 								<h5 class="card-title">Ajustes</h5>
@@ -54,7 +54,7 @@
 					</div>
 					<div class="col">
 						<div class="card h-100 text-center">
-							<img th:src="@{/images/home-img/contabilidad.png}"
+							<img th:src="@{/images/home-img/accounting.png}"
 								class="card-img-top" alt="contabilidad">
 							<div class="card-body">
 								<h5 class="card-title">Contabildiad</h5>
@@ -70,6 +70,6 @@
 		</div>
 	</main>
 
-	<footer th:replace="layout/layout :: footer"> </footer>
+	<footer th:replace="fragments/layout :: footer"> </footer>
 </body>
 </html>

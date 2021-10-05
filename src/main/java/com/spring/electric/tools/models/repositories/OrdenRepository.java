@@ -6,28 +6,28 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.spring.electric.tools.models.entities.Orden;
+import com.spring.electric.tools.models.entities.WorkOrder;
 import com.spring.electric.tools.models.repositories.custom.OrdenRepositoryCustom;
 
-public interface OrdenRepository extends CrudRepository<Orden, Long>, OrdenRepositoryCustom{
+public interface OrdenRepository extends CrudRepository<WorkOrder, Long>, OrdenRepositoryCustom{
 	
 	/**
 	 * Filtrar las ordenes segun un rango de fechas especificas
-	 * @param fechaEntrada
-	 * @param fechaSalida
+	 * @param entryDate
+	 * @param leavingDate
 	 * @return
 	 */
-	@Query("SELECT o FROM Orden o WHERE o.fechaEntrada  >= ?1 "
-			+ "and o.fechaSalida <= ?2 and o.estado LIKE 'LISTO' ")
-	List<Orden> getContabilidad(LocalDate  fechaEntrada, LocalDate  fechaSalida);
+	@Query("SELECT o FROM WorkOrder o WHERE o.entryDate  >= ?1 "
+			+ "and o.leavingDate <= ?2 and o.orderStatus LIKE 'LISTO' ")
+	List<WorkOrder> getContabilidad(LocalDate  entryDate, LocalDate  leavingDate);
 	
-	@Query("SELECT SUM(o.valorArreglo) FROM Orden o WHERE o.fechaEntrada  >= ?1 "
-			+ "and o.fechaSalida  <= ?2 and o.estado LIKE 'LISTO' ")
-	Integer getValorArreglosTotal(LocalDate  fechaEntrada, LocalDate  fechaSalida);
+	@Query("SELECT SUM(o.repairCost) FROM WorkOrder o WHERE o.entryDate  >= ?1 "
+			+ "and o.leavingDate  <= ?2 and o.orderStatus LIKE 'LISTO' ")
+	Integer getValorArreglosTotal(LocalDate  entryDate, LocalDate  leavingDate);
 	
-	@Query("SELECT SUM(o.valorRepuestos) FROM Orden o WHERE o.fechaEntrada  >= ?1 "
-			+ "and o.fechaSalida  <= ?2 and o.estado LIKE 'LISTO' ")
-	Integer getValorRepuestosTotal(LocalDate  fechaEntrada, LocalDate  fechaSalida);
+	@Query("SELECT SUM(o.replacementsCost) FROM WorkOrder o WHERE o.entryDate  >= ?1 "
+			+ "and o.leavingDate  <= ?2 and o.orderStatus LIKE 'LISTO' ")
+	Integer getValorRepuestosTotal(LocalDate  entryDate, LocalDate  leavingDate);
 	
 	
 }

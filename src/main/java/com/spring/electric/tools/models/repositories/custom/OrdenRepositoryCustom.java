@@ -2,7 +2,7 @@ package com.spring.electric.tools.models.repositories.custom;
 
 import java.util.List;
 
-import com.spring.electric.tools.models.entities.Orden;
+import com.spring.electric.tools.models.entities.WorkOrder;
 
 /**
  * 
@@ -16,6 +16,6 @@ public interface OrdenRepositoryCustom {
 	 * @param campoBusqueda valor obtenido del campo de busqueda, puede ser un numero o 
 	 * @return
 	 */
-	List<Orden> buscarOrden(String campoBusqueda);
+	List<WorkOrder> buscarOrden(String campoBusqueda);
 	
 }

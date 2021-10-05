@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layout/layout :: head">
+<head th:replace="fragments/layout :: head">
 </head>
 
 <body>
-	<header th:replace="layout/layout :: header"></header>
+	<header th:replace="fragments/layout :: header"></header>
 	<!-- Inicio de card con el form-->
 	<div class="container">
 		<div class="card border-light" style="margin-bottom: 2%; margin-top: 0.5%;">
@@ -21,9 +21,9 @@
 								<input id="name" type="text" class="form-control" th:field="*{name}" required>
 							</div>
 							<div class=" col-sm">
-								<label for="lastname" style="font-weight: bold;"
+								<label for="lastName" style="font-weight: bold;"
 									class="col-form-label">Apellido:</label>
-								<input id="lastname" type="text" class="form-control" th:field="*{lastname}" required>
+								<input id="lastName" type="text" class="form-control" th:field="*{lastName}" required>
 							</div>
 						</div>
 						<div class="row">
@@ -50,7 +50,7 @@
 		</div>
 	</div>
 
-	<footer th:replace="layout/layout :: footer"></footer>
+	<footer th:replace="fragments/layout :: footer"></footer>
 </body>
 
 </html>

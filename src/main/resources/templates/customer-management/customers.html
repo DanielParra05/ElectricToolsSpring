@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layout/layout :: head">
+<head th:replace="fragments/layout :: head">
 </head>
 
 <body>
-	<header th:replace="layout/layout :: header"></header>
+	<header th:replace="fragments/layout :: header"></header>
 	<div class="container">
 		<div class="card border-light"
 			style="margin-bottom: 2%; margin-top: 0.5%;">
 			<div class="card-header">
-				<h4>Gestion de customers</h4>
+				<h4>Gestion de clientes</h4>
 			</div>
 			<div class="card-body text-primary">
 				<div class="my-2 text-center">
 					<a class="btn btn-primary btn-lg"
 						href="/tools-app/customer-management/customer-form">Nuevo
-						customer</a>
+						cliente</a>
 				</div>
 				<br />
 				<div class="input-group">
 					<input type="text" class="form-control"
-						placeholder="(name o C&#233;dula)"
-						aria-label="Recipient's username with two button addons">
+						placeholder="(Nombre o C&#233;dula)">
 					<button class="btn btn-outline-success" type="button">Buscar</button>
 					<button class="btn btn-outline-danger" type="button">Limpiar</button>
 				</div>
@@ -31,10 +30,10 @@
 					<table id="table" class="table table-bordered table-striped">
 						<thead>
 							<tr class="align-middle" style="text-align: center">
-								<th>name</th>
-								<th>lastname</th>
+								<th>Nombre</th>
+								<th>Apellido</th>
 								<th>Cédula</th>
-								<th>phone</th>
+								<th>Telefono</th>
 								<th>
 									<div class="container">
 										<div class="row">
@@ -42,7 +41,7 @@
 										</div>
 										<div class="row" style="font-size: 70%;">
 											<div class="col">Editar</div>
-											<div class="col">delete</div>
+											<div class="col">Eliminar</div>
 										</div>
 									</div>
 								</th>
@@ -51,7 +50,7 @@
 						<tbody class="text-center">
 							<tr th:each="customer : ${customers}">
 								<td th:text="${customer.name}" />
-								<td th:text="${customer.lastname}" />
+								<td th:text="${customer.lastName}" />
 								<td th:text="${customer.identification}" />
 								<td th:text="${customer.phone}" />
 								<td>
@@ -74,14 +73,14 @@
 							</tr>
 						</tbody>
 					</table>
-					<nav th:replace="paginator-nav :: paginator">					
-					</nav>
+					<!--<nav th:replace="fragments/paginator-nav :: paginator">					
+					</nav>-->
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<footer th:replace="layout/layout :: footer"></footer>
+	<footer th:replace="fragments/layout :: footer"></footer>
 </body>
 
 </html>

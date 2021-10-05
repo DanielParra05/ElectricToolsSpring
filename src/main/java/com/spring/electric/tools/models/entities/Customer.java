@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 @Entity
-@Table(name="CUSTOMER")
+@Table(name="customer")
 @Getter @Setter
 public class Customer implements Serializable{
 	
@@ -22,16 +22,16 @@ public class Customer implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "NAME",nullable = false)
+	@Column(name = "name",nullable = false)
 	private String name;	
 	
-	@Column(name = "LASTNAME")
-	private String lastname;
+	@Column(name = "last_name")
+	private String lastName;
 	
-	@Column(name="IDENTIFICATION")
+	@Column(name="identification")
 	private String identification;
 	
-	@Column(name="PHONE")
+	@Column(name="phone")
 	private String phone;
 	
 }

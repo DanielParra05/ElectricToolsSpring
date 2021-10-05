@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.electric.tools.converters.DateConverter;
-import com.spring.electric.tools.models.entities.Orden;
-import com.spring.electric.tools.models.services.OrdenService;
+import com.spring.electric.tools.models.entities.WorkOrder;
+import com.spring.electric.tools.models.services.OrderService;
 
 @RestController
 @RequestMapping("/api")
 public class ContabilidadController {
 
 	@Autowired
-	private OrdenService ordenService;
+	private OrderService ordenService;
 
 	/**
 	 * Obtener ordenes que tiene fechaEntrada/fechaSalida dentro del rango
@@ -26,7 +26,7 @@ public class ContabilidadController {
 	 * @return
 	 */
 	@GetMapping("/contabilidad/{fechaEntrada}/{fechaSalida}")
-	public List<Orden> getContabilidad(@PathVariable String fechaEntrada, @PathVariable String fechaSalida) {
+	public List<WorkOrder> getContabilidad(@PathVariable String fechaEntrada, @PathVariable String fechaSalida) {
 	
 		return	ordenService.getContabilidad(DateConverter.convertToLocalDate(fechaEntrada),
 				DateConverter.convertToLocalDate(fechaSalida));
