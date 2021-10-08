@@ -14,12 +14,11 @@
 							<img th:src="@{/images/home-img/orders.png}"
 								class="card-img-top" alt="ordenes">
 							<div class="card-body">
-								<h5 class="card-title">Gestion de Ordenes</h5>
-								<p class="card-text">create, editar, delete y generar
-									salida de ordenes.</p>
+								<h5 class="card-title" th:text="#{txt.orders.management}"></h5>
+								<p class="card-text" th:text="#{txt.orders.management.description}"></p>
 							</div>
 							<div class="card-footer">
-								<a href="/tools-app/order-management/orders" class="btn btn-primary">Ingresar</a>
+								<a href="/tools-app/order-management/orders" class="btn btn-primary" th:text="#{txt.ingresar}"></a>
 							</div>
 						</div>
 					</div>
@@ -28,13 +27,12 @@
 							<img th:src="@{/images/home-img/customers.png}"
 								class="card-img-top" alt="customers">
 							<div class="card-body">
-								<h5 class="card-title">Gestion de Clientes</h5>
-								<p class="card-text">create, editar, delete y visualizar
-									customers.</p>
+								<h5 class="card-title"  th:text="#{txt.customers.management}"></h5>
+								<p class="card-text"  th:text="#{txt.customers.management.description}"></p>
 							</div>
 							<div class="card-footer">
 								<a href="/tools-app/customer-management/customers"
-									class="btn btn-primary">Ingresar</a>
+									class="btn btn-primary" th:text="#{txt.ingresar}"></a>
 							</div>
 						</div>
 					</div>
@@ -43,12 +41,11 @@
 							<img th:src="@{/images/home-img/settings.png}"
 								class="card-img-top" alt="ajustes">
 							<div class="card-body">
-								<h5 class="card-title">Ajustes</h5>
-								<p class="card-text">Editar encabezado y pie de pagina de
-									impresion.</p>
+								<h5 class="card-title" th:text="#{txt.settings}"></h5>
+								<p class="card-text" th:text="#{txt.settings.description}"></p>
 							</div>
 							<div class="card-footer">
-								<a href="/ajustes" class="btn btn-primary">Ingresar</a>
+								<a href="/ajustes" class="btn btn-primary" th:text="#{txt.ingresar}"></a>
 							</div>
 						</div>
 					</div>
@@ -57,11 +54,11 @@
 							<img th:src="@{/images/home-img/accounting.png}"
 								class="card-img-top" alt="contabilidad">
 							<div class="card-body">
-								<h5 class="card-title">Contabildiad</h5>
-								<p class="card-text">>penmdiente para la determiand descripcion.</p>
+								<h5 class="card-title" th:text="#{txt.accounting}"></h5>
+								<p class="card-text" th:text="#{txt.accounting.description}"></p>
 							</div>
 							<div class="card-footer">
-								<a href="contabilidad" class="btn btn-primary">Ingresar</a>
+								<a href="contabilidad" class="btn btn-primary" th:text="#{txt.ingresar}"></a>
 							</div>
 						</div>
 					</div>
