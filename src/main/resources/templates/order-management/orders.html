@@ -6,90 +6,86 @@
 
 <body>
 	<header th:replace="fragments/layout :: header"></header>
-	<div class="container">
-		<div class="card border-light" style="margin-bottom: 2%; margin-top: 0.5%;">
-			<div class="card-header">
-				<h4>Gestion de ordenes</h4>
+	<div class="container" style="padding-top:1%">
+		<h4>Gestion de Ordenes</h4>
+		<hr width=100%>
+		<div>
+			<div class="my-3 text-center">
+				<a class="btn btn-primary btn-lg" href="/tools-app/order-management/order-form">Nueva orden</a>
 			</div>
-			<div class="card-body text-primary">
-				<div class="my-2 text-center">
-					<a class="btn btn-primary btn-lg" href="/tools-app/order-management/order-form">Nueva orden</a>
-				</div>
-				<br />
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="(name o C&#233;dula)"
-						aria-label="Recipient's username with two button addons">
-					<button class="btn btn-outline-success" type="button">Buscar</button>
-					<button class="btn btn-outline-danger" type="button">Limpiar</button>
-				</div>
-				<br />
-				<div class="table-responsive">
-					<table id="table" class="table table-bordered table-striped">
-						<thead>
-							<tr class="align-middle" style="text-align: center">
-								<th style="text-align: center">N&#186;</th>
-								<th style="text-align: center">Cliente</th>
-								<th style="text-align: center">Fecha Ingreso</th>
-								<th style="text-align: center">Valor</th>
-								<th style="text-align: center">Estado</th>
-								<th>
-									<div class="container">
-										<div class="row">
-											<div class="col">Acciones</div>
-										</div>
-										<div class="row" style="font-size: 70%;">
-											<div class="col">Editar</div>
-											<div class="col">Eliminar</div>
-											<div class="col">Detalles</div>
-											<div class="col">Entregar</div>
-											<div class="col">Imprimir</div>
-										</div>
-									</div>
-								</th>
-							</tr>
-						</thead>
-						<tbody class="text-center">
-							<tr th:each="order : ${workOrders}">
-								<td th:text="${order.id}" />
-								<td th:text="${order.customer.name}+' '+${order.customer.lastName}" />
-								<td th:text="${order.entryDate}" />
-								<td th:text="${order.repairCost}" />
-								<td th:text="${order.orderStatus}" />
-								<td>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="(name o C&#233;dula)"
+					aria-label="Recipient's username with two button addons">
+				<button class="btn btn-outline-success" type="button">Buscar</button>
+				<button class="btn btn-outline-danger" type="button">Limpiar</button>
+			</div>
+			<br />
+			<div class="table-responsive">
+				<table id="table" class="table table-bordered table-striped">
+					<thead>
+						<tr class="align-middle" style="text-align: center">
+							<th style="text-align: center">N&#186;</th>
+							<th style="text-align: center">Cliente</th>
+							<th style="text-align: center">Fecha Ingreso</th>
+							<th style="text-align: center">Valor</th>
+							<th style="text-align: center">Estado</th>
+							<th>
+								<div class="container">
 									<div class="row">
-										<div class="col text-center">
-											<a th:href="@{/order-management/order-form/} + ${order.id}"
-												style="cursor: pointer"><img class="img-fluid"
-													th:src="@{/images/iconos/pencil.png}" /></a>
-										</div>
-										<div class="col text-center">
-											<a th:href="@{/order-management/delete-order/} + ${order.id}"
-												style="cursor: pointer"><img class="img-fluid"
-													th:src="@{/images/iconos/trash-bin.png}"
-													onclick="return confirm('¿Estás seguro?')" /></a>
-										</div>
-										<div class="col text-center">
-											<a th:href="@{/order-management/delete-order/} + ${order.id}"
-												style="cursor: pointer"><img class="img-fluid"
-													th:src="@{/images/iconos/details.png}"/></a>
-										</div>
-										<div class="col text-center">
-											<a th:href="@{/order-management/delete-order/} + ${order.id}"
-												style="cursor: pointer"><img class="img-fluid"
-													th:src="@{/images/iconos/giving.png}"/></a>
-										</div>
-										<div class="col text-center">
-											<a th:href="@{/order-management/delete-order/} + ${order.id}"
-												style="cursor: pointer"><img class="img-fluid"
-													th:src="@{/images/iconos/printer.png}"/></a>
-										</div>
+										<div class="col">Acciones</div>
 									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					</nav>
-				</div>
+									<div class="row" style="font-size: 70%;">
+										<div class="col">Editar</div>
+										<div class="col">Eliminar</div>
+										<div class="col">Detalles</div>
+										<div class="col">Entregar</div>
+										<div class="col">Imprimir</div>
+									</div>
+								</div>
+							</th>
+						</tr>
+					</thead>
+					<tbody class="text-center">
+						<tr th:each="order : ${workOrders}">
+							<td th:text="${order.id}" />
+							<td th:text="${order.customer.name}+' '+${order.customer.lastName}" />
+							<td th:text="${order.entryDate}" />
+							<td th:text="${order.repairCost}" />
+							<td th:text="${order.orderStatus}" />
+							<td>
+								<div class="row">
+									<div class="col text-center">
+										<a th:href="@{/order-management/order-form/} + ${order.id}"
+											style="cursor: pointer"><img class="img-fluid"
+												th:src="@{/images/iconos/pencil.png}" /></a>
+									</div>
+									<div class="col text-center">
+										<a th:href="@{/order-management/delete-order/} + ${order.id}"
+											style="cursor: pointer"><img class="img-fluid"
+												th:src="@{/images/iconos/trash-bin.png}"
+												onclick="return confirm('¿Estás seguro?')" /></a>
+									</div>
+									<div class="col text-center">
+										<a th:href="@{/order-management/delete-order/} + ${order.id}"
+											style="cursor: pointer"><img class="img-fluid"
+												th:src="@{/images/iconos/details.png}" /></a>
+									</div>
+									<div class="col text-center">
+										<a th:href="@{/order-management/delete-order/} + ${order.id}"
+											style="cursor: pointer"><img class="img-fluid"
+												th:src="@{/images/iconos/giving.png}" /></a>
+									</div>
+									<div class="col text-center">
+										<a th:href="@{/order-management/delete-order/} + ${order.id}"
+											style="cursor: pointer"><img class="img-fluid"
+												th:src="@{/images/iconos/printer.png}" /></a>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</nav>
 			</div>
 		</div>
 	</div>

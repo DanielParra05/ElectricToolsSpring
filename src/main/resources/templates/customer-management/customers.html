@@ -6,81 +6,77 @@
 
 <body>
 	<header th:replace="fragments/layout :: header"></header>
-	<div class="container">
-		<div class="card border-light" style="margin-bottom: 2%; margin-top: 0.5%;">
-			<div class="card-header">
-				<h4>Gestion de clientes</h4>
+	<div class="container" style="padding-top:1%">
+		<h4>Clientes</h4>
+		<hr width=100%>
+		<div>
+			<div class="my-3 text-center">
+				<a class="btn btn-primary btn-lg" href="/tools-app/customer-management/customer-form">Nuevo
+					cliente</a>
 			</div>
-			<div class="card-body text-primary">
-				<div class="my-2 text-center">
-					<a class="btn btn-primary btn-lg" href="/tools-app/customer-management/customer-form">Nuevo
-						cliente</a>
-				</div>
-				<br />
-				<div class="input-group">
-					<input id="searchField" type="text" class="form-control" placeholder="(Nombre o C&#233;dula)"
-						th:value="${searchField}">
-					<button id="searchButton" class="btn btn-outline-success" type="button"
-						onclick="return searchCustomer()">Buscar</button>
-					<button id="clearSearchButton" class="btn btn-outline-danger" type="button"
-						onclick="return clearSearchBar()">Limpiar</button>
-				</div>
-				<div class="container">
-					<div class="row">
-						<div id="warningNoText" class="alert alert-danger" style="display: none" role="alert">
-							Debes ingresar una cedula o nombre para buscar.
-						</div>
+			<div class="input-group">
+				<input id="searchField" type="text" class="form-control" placeholder="(Nombre o C&#233;dula)"
+					th:value="${searchField}">
+				<button id="searchButton" class="btn btn-outline-success" type="button"
+					onclick="return searchCustomer()">Buscar</button>
+				<button id="clearSearchButton" class="btn btn-outline-danger" type="button"
+					onclick="return clearSearchBar()">Limpiar</button>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div id="warningNoText" class="alert alert-danger" style="display: none" role="alert">
+						Debes ingresar una cedula o nombre para buscar.
 					</div>
 				</div>
-				<br />
-				<div class="table-responsive">
-					<table id="table" class="table table-bordered table-striped">
-						<thead>
-							<tr class="align-middle" style="text-align: center">
-								<th>Nombre</th>
-								<th>Apellido</th>
-								<th>Cédula</th>
-								<th>Telefono</th>
-								<th>
-									<div class="container">
-										<div class="row">
-											<div class="col">Acciones</div>
-										</div>
-										<div class="row" style="font-size: 70%;">
-											<div class="col">Editar</div>
-											<div class="col">Eliminar</div>
-										</div>
-									</div>
-								</th>
-							</tr>
-						</thead>
-						<tbody class="text-center">
-							<tr th:each="customer : ${customers}">
-								<td th:text="${customer.name}" />
-								<td th:text="${customer.lastName}" />
-								<td th:text="${customer.identification}" />
-								<td th:text="${customer.phone}" />
-								<td>
+			</div>
+			<br />
+			<div class="table-responsive">
+				<table id="table" class="table table-bordered table-striped">
+					<thead>
+						<tr class="align-middle" style="text-align: center">
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Cédula</th>
+							<th>Telefono</th>
+							<th>
+								<div class="container">
 									<div class="row">
-										<div class="col text-center">
-											<a th:href="@{/customer-management/customer-form/} + ${customer.id}"
-												style="cursor: pointer"><img class="img-fluid"
-													th:src="@{/images/iconos/pencil.png}" /></a>
-										</div>
-										<div class="col text-center">
-											<a th:href="@{/customer-management/delete-customer/} + ${customer.id}"
-												style="cursor: pointer"><img class="img-fluid"
-													th:src="@{/images/iconos/trash-bin.png}"
-													onclick="return confirm('¿Estás seguro?')" /></a>
-										</div>
+										<div class="col">Acciones</div>
 									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<nav th:replace="fragments/paginator-nav :: paginator">
-					</nav>
-				</div>
+									<div class="row" style="font-size: 70%;">
+										<div class="col">Editar</div>
+										<div class="col">Eliminar</div>
+									</div>
+								</div>
+							</th>
+						</tr>
+					</thead>
+					<tbody class="text-center">
+						<tr th:each="customer : ${customers}">
+							<td th:text="${customer.name}" />
+							<td th:text="${customer.lastName}" />
+							<td th:text="${customer.identification}" />
+							<td th:text="${customer.phone}" />
+							<td>
+								<div class="row">
+									<div class="col text-center">
+										<a th:href="@{/customer-management/customer-form/} + ${customer.id}"
+											style="cursor: pointer"><img class="img-fluid"
+												th:src="@{/images/iconos/pencil.png}" /></a>
+									</div>
+									<div class="col text-center">
+										<a th:href="@{/customer-management/delete-customer/} + ${customer.id}"
+											style="cursor: pointer"><img class="img-fluid"
+												th:src="@{/images/iconos/trash-bin.png}"
+												onclick="return confirm('¿Estás seguro?')" /></a>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<nav th:replace="fragments/paginator-nav :: paginator">
+				</nav>
 			</div>
 		</div>
 	</div>
