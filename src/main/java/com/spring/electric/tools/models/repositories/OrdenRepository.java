@@ -29,5 +29,7 @@ public interface OrdenRepository extends CrudRepository<WorkOrder, Long>, OrdenR
 			+ "and o.leavingDate  <= ?2 and o.orderStatus LIKE 'LISTO' ")
 	Integer getValorRepuestosTotal(LocalDate  entryDate, LocalDate  leavingDate);
 	
+	List<WorkOrder> findAllByOrderByEntryDateDesc();
+	 
 	
 }

@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<WorkOrder> findAll() {
-		return (List<WorkOrder>) ordenDAO.findAll();
+		return ordenDAO.findAllByOrderByEntryDateDesc();
 	}
 
 	@Override

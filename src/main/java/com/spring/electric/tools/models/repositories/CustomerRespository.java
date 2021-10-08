@@ -16,4 +16,6 @@ public interface CustomerRespository extends PagingAndSortingRepository<Customer
 	
 	Customer findById(long id);
 	
+	Page <Customer> findAllByOrderByNameAsc(Pageable pageable);
+	
 }

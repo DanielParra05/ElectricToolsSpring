@@ -7,23 +7,30 @@
 <body>
 	<header th:replace="fragments/layout :: header"></header>
 	<div class="container">
-		<div class="card border-light"
-			style="margin-bottom: 2%; margin-top: 0.5%;">
+		<div class="card border-light" style="margin-bottom: 2%; margin-top: 0.5%;">
 			<div class="card-header">
 				<h4>Gestion de clientes</h4>
 			</div>
 			<div class="card-body text-primary">
 				<div class="my-2 text-center">
-					<a class="btn btn-primary btn-lg"
-						href="/tools-app/customer-management/customer-form">Nuevo
+					<a class="btn btn-primary btn-lg" href="/tools-app/customer-management/customer-form">Nuevo
 						cliente</a>
 				</div>
 				<br />
 				<div class="input-group">
-					<input type="text" class="form-control"
-						placeholder="(Nombre o C&#233;dula)">
-					<button class="btn btn-outline-success" type="button">Buscar</button>
-					<button class="btn btn-outline-danger" type="button">Limpiar</button>
+					<input id="searchField" type="text" class="form-control" placeholder="(Nombre o C&#233;dula)"
+						th:value="${searchField}">
+					<button id="searchButton" class="btn btn-outline-success" type="button"
+						onclick="return searchCustomer()">Buscar</button>
+					<button id="clearSearchButton" class="btn btn-outline-danger" type="button"
+						onclick="return clearSearchBar()">Limpiar</button>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div id="warningNoText" class="alert alert-danger" style="display: none" role="alert">
+							Debes ingresar una cedula o nombre para buscar.
+						</div>
+					</div>
 				</div>
 				<br />
 				<div class="table-responsive">
@@ -56,25 +63,25 @@
 								<td>
 									<div class="row">
 										<div class="col text-center">
-											<a
-												th:href="@{/customer-management/customer-form/} + ${customer.id}"
+											<a th:href="@{/customer-management/customer-form/} + ${customer.id}"
 												style="cursor: pointer"><img class="img-fluid"
-												th:src="@{/images/iconos/pencil.png}" /></a>
+													th:src="@{/images/iconos/pencil.png}" /></a>
 										</div>
 										<div class="col text-center">
-											<a
-												th:href="@{/customer-management/delete-customer/} + ${customer.id}"
+											<a th:href="@{/customer-management/delete-customer/} + ${customer.id}"
 												style="cursor: pointer"><img class="img-fluid"
-												th:src="@{/images/iconos/trash-bin.png}"
-												onclick="return confirm('¿Estás seguro?')" /></a>
+													th:src="@{/images/iconos/trash-bin.png}"
+													onclick="return confirm('¿Estás seguro?')" /></a>
 										</div>
 									</div>
 								</td>
 							</tr>
 						</tbody>
 					</table>
-					<!--<nav th:replace="fragments/paginator-nav :: paginator">					
-					</nav>-->
+					<div class="text-center">
+						<nav th:replace="fragments/paginator-nav :: paginator">
+						</nav>
+					</div>
 				</div>
 			</div>
 		</div>

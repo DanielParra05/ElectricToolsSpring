@@ -7,6 +7,7 @@ import org.springframework.validation.Validator;
 
 import com.spring.electric.tools.models.entities.Customer;
 import com.spring.electric.tools.models.services.CustomerService;
+import com.spring.electric.tools.utils.PageRender;
 
 @Component
 public class CustomerValidator implements Validator {
@@ -15,9 +16,10 @@ public class CustomerValidator implements Validator {
 	CustomerService customerService;
 
 	@Override
-	public boolean supports(Class<?> clazz) {
-		// Validates if the object corresponds to Customer type
-		return Customer.class.isAssignableFrom(clazz);
+	public boolean supports(Class<?> clazz) {		
+		return  Customer.class.isAssignableFrom(clazz) ||  
+				org.springframework.data.domain.PageImpl.class.isAssignableFrom(clazz) ||
+				PageRender.class.isAssignableFrom(clazz);
 	}
 
 	@Override

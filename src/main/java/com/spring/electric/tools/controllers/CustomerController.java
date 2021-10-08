@@ -40,17 +40,25 @@ public class CustomerController {
 
 	@InitBinder // Validator injection
 	public void initBinder(WebDataBinder binder) {
-	//	binder.addValidators(customerValidador);
+		binder.addValidators(customerValidador);
 	}
 
-	@GetMapping("/customers")	
-	public String listCustomers(@RequestParam(name="page", defaultValue = "0") int page, Model model) {		
+	@GetMapping("/customers")
+	public String listCustomers(@RequestParam(name = "page", defaultValue = "0") int page,
+			@RequestParam(name = "searchField", defaultValue = "") String searchField, Model model) {
 		Pageable pageRequest = PageRequest.of(page, PAGINATOR_SIZE);
-		Page <Customer> customers = customerService.findAll(pageRequest);		
-		PageRender<Customer> pageRender = new PageRender<Customer>("/customer-management/customers", customers);		
-		
+		Page<Customer> customers;
+		PageRender<Customer> pageRender;
+		if (!searchField.isEmpty()) {
+			customers = customerService.searchCustomer(searchField, pageRequest);
+			pageRender= new PageRender<Customer>("/customer-management/customers?searchField=".concat(searchField), customers);
+		} else {
+			customers = customerService.findAll(pageRequest);
+			pageRender= new PageRender<Customer>("/customer-management/customers", customers);
+		}
 		model.addAttribute("customers", customers);
 		model.addAttribute("page", pageRender);
+		model.addAttribute("searchField", searchField);
 		return "customer-management/customers";
 	}
 
@@ -69,7 +77,7 @@ public class CustomerController {
 		flash.addFlashAttribute("success",
 				customer.getId() != null ? "Cliente actualizado exitosamente!" : "Cliente registrado exitosamente!");
 		customerService.save(customer);
-		status.setComplete();		
+		status.setComplete();
 		return "redirect:/customer-management/customers";
 	}
 
@@ -88,15 +96,9 @@ public class CustomerController {
 	public String deleteCustomer(@PathVariable Long id, Model model, RedirectAttributes flash) {
 		if (id > 0) {
 			customerService.delete(id);
-			flash.addFlashAttribute("success","Cliente eliminado!");
+			flash.addFlashAttribute("success", "Cliente eliminado!");
 		}
 		return "redirect:/customer-management/customers";
-	}
-
-
-	@GetMapping("/customers/busqueda/{campoBusqueda}")
-	public Page<Customer> buscarCustomers(@PathVariable String campoBusqueda) {
-		return customerService.searchCustomer(campoBusqueda, PageRequest.of(0, PAGINATOR_SIZE));
 	}
 
 }
