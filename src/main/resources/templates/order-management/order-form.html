@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/layout :: head">
+</head>
+
+<body>
+	<header th:replace="fragments/layout :: header"></header>
+
+	<div class="container">
+		<div class="card border-light" style="margin-bottom: 2%; margin-top: 0.5%;">
+			<div class="card-header">
+				<h4>Nueva Orden</h4>
+			</div>
+			<div class="card-body">
+				<form th:action="@{/order-management/order-form}" th:object="${workOrder}" method="POST">
+					<div class="container">
+						<div class="row">
+							<div class="col-sm">
+								<label for="selectCliente" style="font-weight: bold;"
+									class="col-form-label">Cliente:</label>
+							</div>
+							<div class="col-sm">
+								<label for="marca" style="font-weight: bold;" class="col-form-label">Fecha de
+									ingreso:</label>
+
+								<input type="date" class="form-control" name="fecha" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<label for="articulo" style="font-weight: bold;"
+									class="col-form-label">Articulo:</label>
+
+								<input type="text" class="form-control" name="articulo">
+							</div>
+							<div class="col-sm">
+								<label for="marca" style="font-weight: bold;" class="col-form-label">Marca:</label>
+
+								<input type="text" class="form-control" name="marca" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<label for="modelo" style="font-weight: bold;" class="col-form-label">Modelo:</label>
+
+								<input type="text" class="form-control" name="modelo" required>
+							</div>
+							<div class="col-sm">
+								<label for="serie" style="font-weight: bold;" class="col-form-label">N&#186;
+									Serie:</label>
+
+								<input type="number" class="form-control" name="serie" required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<label for="danio" style="font-weight: bold;" class="col-form-label">Daño:</label>
+								<input type="text" class="form-control" name="danio" required>
+							</div>
+							<div class="col-sm">
+								<label for="valor" style="font-weight: bold;" class="col-form-label">Valor del
+									arreglo:</label>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">$</span>
+									</div>
+									<input type="number" class="form-control" name="valorArreglo" required>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="notas" style="font-weight: bold;" class="col-form-label">Observaciones:</label>
+							<textarea class="form-control" name="observaciones" required></textarea>
+						</div>
+					</div>
+					<div class="text-center">
+						<button class="btn btn-primary btn-lg" role="button">Crear</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<footer th:replace="fragments/layout :: footer"></footer>
+</body>
+
+</html>

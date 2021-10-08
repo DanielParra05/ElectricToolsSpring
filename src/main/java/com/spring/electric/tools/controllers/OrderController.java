@@ -25,5 +25,13 @@ public class OrderController {
 
 		return "order-management/orders";
 	}
+	
+	@GetMapping("/order-form")
+	public String creatOrder(Model model) {
+		WorkOrder workOrder = new WorkOrder();
+		model.addAttribute("workOrder", workOrder);
+
+		return "order-management/order-form";
+	}
 
 }
