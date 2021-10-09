@@ -7,25 +7,23 @@
 <body>
 	<header th:replace="fragments/layout :: header"></header>
 	<div class="container" style="padding-top:1%">
-		<h4>Clientes</h4>
+		<h4 th:text="#{txt.customers}"></h4>
 		<hr width=100%>
 		<div>
 			<div class="my-3 text-center">
-				<a class="btn btn-primary btn-lg" href="/tools-app/customer-management/customer-form">Nuevo
-					cliente</a>
+				<a class="btn btn-primary btn-lg" href="/tools-app/customer-management/customer-form" th:text="#{txt.new.customer}"></a>
 			</div>
 			<div class="input-group">
 				<input id="searchField" type="text" class="form-control" placeholder="(Nombre o C&#233;dula)"
 					th:value="${searchField}">
 				<button id="searchButton" class="btn btn-outline-success" type="button"
-					onclick="return searchCustomer()">Buscar</button>
+					onclick="return searchCustomer()" th:text="#{txt.search}"></button>
 				<button id="clearSearchButton" class="btn btn-outline-danger" type="button"
-					onclick="return clearSearchBar()">Limpiar</button>
+					onclick="return clearSearchBar()" th:text="#{txt.clear}"></button>
 			</div>
 			<div class="container">
 				<div class="row">
-					<div id="warningNoText" class="alert alert-danger" style="display: none" role="alert">
-						Debes ingresar una cedula o nombre para buscar.
+					<div id="warningNoText" class="alert alert-danger" style="display: none" role="alert" th:text="#{error.search.bar.empty}">						
 					</div>
 				</div>
 			</div>
@@ -34,18 +32,18 @@
 				<table id="table" class="table table-bordered table-striped">
 					<thead>
 						<tr class="align-middle" style="text-align: center">
-							<th th:text="#{txt.customer.name}">Nombre</th>
-							<th>Apellido</th>
-							<th>Cédula</th>
-							<th>Telefono</th>
+							<th th:text="#{txt.customer.name}"></th>
+							<th th:text="#{txt.customer.last.name}"></th>
+							<th th:text="#{txt.customer.identification}"></th>
+							<th th:text="#{txt.customer.phone}"></th>
 							<th>
 								<div class="container">
 									<div class="row">
-										<div class="col">Acciones</div>
+										<div class="col" th:text="#{txt.actions}"></div>
 									</div>
 									<div class="row" style="font-size: 70%;">
-										<div class="col">Editar</div>
-										<div class="col">Eliminar</div>
+										<div class="col" th:text="#{txt.edit}"></div>
+										<div class="col" th:text="#{txt.remove}"></div>
 									</div>
 								</div>
 							</th>

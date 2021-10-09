@@ -29,7 +29,7 @@ public class CustomerValidator implements Validator {
 
 		if (customerToFound != null
 				&& (customerToValidate.getId() == null || customerToFound.getId() != customerToValidate.getId())) {
-			errors.rejectValue("identification", "identification.customer.repeated");
+			errors.rejectValue("identification", "error.identification.customer.repeated");
 		}
 	}
 }

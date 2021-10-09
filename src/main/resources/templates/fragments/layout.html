@@ -18,8 +18,7 @@
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/tools-app">Herramientas
-					Electricas</a>
+				<a class="navbar-brand" href="/tools-app" th:text="#{txt.tools.app.name}"></a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarScroll"
 					aria-controls="navbarScroll" aria-expanded="false"
@@ -32,28 +31,25 @@
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							id="navbarScrollingDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> customers </a>
+							data-bs-toggle="dropdown" aria-expanded="false" th:text="#{txt.customers}"></a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarScrollingDropdown">
 								<li><a class="dropdown-item"
-									href="/tools-app/customer-management/customers">Gestion
-										customers</a></li>
+									href="/tools-app/customer-management/customers" th:text=#{txt.customers.management}></a></li>
 								<li><a class="dropdown-item"
-									href="/tools-app/customer-management/customer-form">Nuevo
-										customer</a></li>
+									href="/tools-app/customer-management/customer-form" th:text="#{txt.new.customer}"></a></li>
 							</ul></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							id="navbarScrollingDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Ordenes </a>
+							data-bs-toggle="dropdown" aria-expanded="false" th:text="#{txt.orders}"></a>
 							<ul class="dropdown-menu"
 								aria-labelledby="navbarScrollingDropdown">
-								<li><a class="dropdown-item" href="#">Gestion de
-										Ordenes</a></li>
-								<li><a class="dropdown-item" href="#">Nueva Orden</a></li>
+								<li><a class="dropdown-item" href="/tools-app/order-management/orders" th:text="#{txt.orders.management}"></a></li>
+								<li><a class="dropdown-item" href="/tools-app/order-management/order-form" th:text="#{txt.new.order}">Nueva Orden</a></li>
 							</ul></li>
-						<li class="nav-item"><a class="nav-link" href="#">Ajustes</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Contabilidad</a></li>
+						<li class="nav-item"><a class="nav-link" href="#" th:text="#{txt.settings}"></a></li>
+						<li class="nav-item"><a class="nav-link" href="#" th:text="#{txt.accounting}"></a></li>
 					</ul>
 					<form class="d-flex">
 						<input class="form-control me-2" type="search"

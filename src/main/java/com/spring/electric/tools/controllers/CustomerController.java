@@ -3,6 +3,7 @@ package com.spring.electric.tools.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +38,9 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerValidator customerValidador;
+	
+	@Autowired
+	private MessageSource messageSource;
 
 	@InitBinder // Validator injection
 	public void initBinder(WebDataBinder binder) {
@@ -75,7 +79,7 @@ public class CustomerController {
 			return "customer-management/customer-form";
 		}
 		flash.addFlashAttribute("success",
-				customer.getId() != null ? "Cliente actualizado exitosamente!" : "Cliente registrado exitosamente!");
+				customer.getId() != null ? messageSource.getMessage("msg.customer.updated", null, null) : messageSource.getMessage("msg.customer.registered", null, null));
 		customerService.save(customer);
 		status.setComplete();
 		return "redirect:/customer-management/customers";
@@ -96,7 +100,7 @@ public class CustomerController {
 	public String deleteCustomer(@PathVariable Long id, Model model, RedirectAttributes flash) {
 		if (id > 0) {
 			customerService.delete(id);
-			flash.addFlashAttribute("success", "Cliente eliminado!");
+			flash.addFlashAttribute("success", messageSource.getMessage("msg.customer.deleted", null, null));
 		}
 		return "redirect:/customer-management/customers";
 	}

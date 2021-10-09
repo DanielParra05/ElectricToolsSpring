@@ -7,39 +7,39 @@
 <body>
 	<header th:replace="fragments/layout :: header"></header>
 	<div class="container" style="padding-top:1%">
-		<h4>Gestion de Ordenes</h4>
+		<h4 th:text="#{txt.orders.management}"></h4>
 		<hr width=100%>
 		<div>
 			<div class="my-3 text-center">
-				<a class="btn btn-primary btn-lg" href="/tools-app/order-management/order-form">Nueva orden</a>
+				<a class="btn btn-primary btn-lg" href="/tools-app/order-management/order-form" th:text="#{txt.new.order}"></a>
 			</div>
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="(name o C&#233;dula)"
+				<input type="text" class="form-control" placeholder="(N.º de orden o c&#233;dula del cliente)"
 					aria-label="Recipient's username with two button addons">
-				<button class="btn btn-outline-success" type="button">Buscar</button>
-				<button class="btn btn-outline-danger" type="button">Limpiar</button>
+				<button class="btn btn-outline-success" type="button" th:text="#{txt.search}"></button>
+				<button class="btn btn-outline-danger" type="button" th:text="#{txt.clear}"></button>
 			</div>
 			<br />
 			<div class="table-responsive">
 				<table id="table" class="table table-bordered table-striped">
 					<thead>
 						<tr class="align-middle" style="text-align: center">
-							<th style="text-align: center">N&#186;</th>
-							<th style="text-align: center">Cliente</th>
-							<th style="text-align: center">Fecha Ingreso</th>
-							<th style="text-align: center">Valor</th>
-							<th style="text-align: center">Estado</th>
+							<th style="text-align: center" th:text="#{txt.order.number.symbol}"></th>
+							<th style="text-align: center" th:text="#{txt.customer}"></th>
+							<th style="text-align: center" th:text="#{txt.order.entry.date}"></th>
+							<th style="text-align: center" th:text="#{txt.order.cost}"></th>
+							<th style="text-align: center" th:text="#{txt.order.state}"></th>
 							<th>
 								<div class="container">
 									<div class="row">
 										<div class="col">Acciones</div>
 									</div>
 									<div class="row" style="font-size: 70%;">
-										<div class="col">Editar</div>
-										<div class="col">Eliminar</div>
-										<div class="col">Detalles</div>
-										<div class="col">Entregar</div>
-										<div class="col">Imprimir</div>
+										<div class="col" th:text="#{txt.edit}"></div>
+										<div class="col" th:text="#{txt.remove}"></div>
+										<div class="col" th:text="#{txt.details}"></div>
+										<div class="col" th:text="#{txt.hand.over}"></div>
+										<div class="col" th:text="#{txt.print}"></div>
 									</div>
 								</div>
 							</th>
