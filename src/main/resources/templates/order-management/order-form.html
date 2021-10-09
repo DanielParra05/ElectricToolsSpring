@@ -17,66 +17,66 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm">
-							<label for="selectCustomer" style="font-weight: bold" class="col-form-label"
+							<label for="customer" style="font-weight: bold" class="col-form-label"
 								th:text="#{txt.customer}"></label>
-							<select id="selectCustomer" name="selectCustomer" style="width: 100%;">
-								<option selected th:text="#{txt.seleccione.cliente}"></option>
+							<select id="selectCustomer" style="width: 100%;" th:field="*{customer}">
+								<option selected th:text="#{txt.seleccione.cliente}" value="0"></option>
 								<option th:each="customer : ${customers}"
 									th:text="${customer.name}+' '+${customer.lastName}+' - C.C. '+${customer.identification}"
 									th:value="${customer.id}"></option>
 							</select>
 						</div>
 						<div class="col-sm">
-							<label for="marca" style="font-weight: bold;" class="col-form-label"
+							<label for="entryDate" style="font-weight: bold;" class="col-form-label"
 								th:text="#{txt.order.entry.date}"></label>
-							<input type="date" class="form-control form-control-sm" name="fecha" required>
+							<input type="date" class="form-control form-control-sm" th:field="*{entryDate}" required>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm">
-							<label for="articulo" style="font-weight: bold;" class="col-form-label"
+							<label for="toolName" style="font-weight: bold;" class="col-form-label"
 								th:text="#{txt.order.tool}+':'"></label>
-							<input type="text" class="form-control form-control-sm" name="articulo">
+							<input type="text" class="form-control form-control-sm" th:field="*{toolName}" required>
 						</div>
 						<div class="col-sm">
-							<label for="marca" style="font-weight: bold;" class="col-form-label"
+							<label for="toolBrand" style="font-weight: bold;" class="col-form-label"
 								th:text="#{txt.order.tool.brand}+':'"></label>
-							<input type="text" class="form-control form-control-sm" name="marca" required>
+							<input type="text" class="form-control form-control-sm" th:field="*{toolBrand}" required>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm">
-							<label for="modelo" style="font-weight: bold;" class="col-form-label"
+							<label for="toolModel" style="font-weight: bold;" class="col-form-label"
 								th:text="#{txt.order.tool.model}+':'"></label>
-							<input type="text" class="form-control form-control-sm" name="modelo" required>
+							<input type="text" class="form-control form-control-sm" th:field="*{toolModel}" required>
 						</div>
 						<div class="col-sm">
-							<label for="serie" style="font-weight: bold;" class="col-form-label"
+							<label for="toolSerial" style="font-weight: bold;" class="col-form-label"
 								th:text="#{txt.order.tool.serial}+':'"></label>
-							<input type="number" class="form-control form-control-sm" name="serie" required>
+							<input type="number" class="form-control form-control-sm" th:field="*{toolSerial}" required>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm">
-							<label for="danio" style="font-weight: bold;" class="col-form-label"
+							<label for="reportedIssue" style="font-weight: bold;" class="col-form-label"
 								th:text="#{txt.order.issue}+':'"></label>
-							<input type="text" class="form-control form-control-sm" name="danio" required>
+							<input type="text" class="form-control form-control-sm" th:field="*{reportedIssue}" required>
 						</div>
 						<div class="col-sm">
-							<label for="valor" style="font-weight: bold;" class="col-form-label"
+							<label for="repairCost" style="font-weight: bold;" class="col-form-label"
 								th:text="#{txt.order.repair.cost}+':'"></label>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1">$</span>
 								</div>
-								<input type="number" class="form-control form-control-sm" name="valorArreglo" required>
+								<input type="number" class="form-control form-control-sm" th:field="*{repairCost}" required>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="notas" style="font-weight: bold;" class="col-form-label"
+						<label for="comments" style="font-weight: bold;" class="col-form-label"
 							th:text="#{txt.order.comments}+':'"></label>
-						<textarea class="form-control form-control-sm" name="observaciones" required></textarea>
+						<textarea class="form-control form-control-sm" th:field="*{comments}"></textarea>
 					</div>
 				</div>
 				<div class="py-3 text-center">

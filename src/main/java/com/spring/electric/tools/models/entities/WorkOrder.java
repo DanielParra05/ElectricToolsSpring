@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.electric.tools.models.enums.OrderStatus;
 
@@ -23,7 +25,8 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "work_order")
-@Getter @Setter
+@Getter
+@Setter
 public class WorkOrder implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -31,16 +34,18 @@ public class WorkOrder implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "entry_date")
 	private LocalDate entryDate;
-
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "leaving_date", nullable = true)
 	private LocalDate leavingDate;
-	
-	@Column(name = "comments")
+
+	@Column(name = "comments", nullable=true)
 	private String comments;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -63,12 +68,12 @@ public class WorkOrder implements Serializable {
 
 	@Column(name = "repair_cost", nullable = true)
 	private Integer repairCost;
-	
+
 	@Column(name = "replacements_cost", nullable = true)
 	private Integer replacementsCost;
-	
+
 	@Enumerated(EnumType.STRING)
-	@Column(name="order_status", nullable=false)
-	private OrderStatus orderStatus;
+	@Column(name = "order_status", nullable = false)
+	private OrderStatus orderStatus;	
 	
 }
