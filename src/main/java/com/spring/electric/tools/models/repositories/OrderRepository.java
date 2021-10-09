@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.spring.electric.tools.models.entities.WorkOrder;
-import com.spring.electric.tools.models.repositories.custom.OrdenRepositoryCustom;
+import com.spring.electric.tools.models.repositories.custom.OrderCustomRepository;
 
-public interface OrdenRepository extends CrudRepository<WorkOrder, Long>, OrdenRepositoryCustom{
+public interface OrderRepository extends CrudRepository<WorkOrder, Long>, OrderCustomRepository{
 	
 	/**
 	 * Filtrar las ordenes segun un rango de fechas especificas
@@ -29,7 +29,6 @@ public interface OrdenRepository extends CrudRepository<WorkOrder, Long>, OrdenR
 			+ "and o.leavingDate  <= ?2 and o.orderStatus LIKE 'LISTO' ")
 	Integer getValorRepuestosTotal(LocalDate  entryDate, LocalDate  leavingDate);
 	
-	List<WorkOrder> findAllByOrderByEntryDateDesc();
-	 
+	List<WorkOrder> findAllByOrderByEntryDateDesc();	 
 	
 }

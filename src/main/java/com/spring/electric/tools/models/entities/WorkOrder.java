@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.spring.electric.tools.models.enums.OrdenEstado;
+import com.spring.electric.tools.models.enums.OrderStatus;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -69,6 +69,6 @@ public class WorkOrder implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="order_status", nullable=false)
-	private OrdenEstado orderStatus;
+	private OrderStatus orderStatus;
 	
 }

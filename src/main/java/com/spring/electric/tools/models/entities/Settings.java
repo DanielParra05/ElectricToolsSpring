@@ -14,7 +14,7 @@ import lombok.Setter;
 @Entity
 @Table(name="AJUSTES")
 @Getter @Setter
-public class Ajustes implements Serializable{
+public class Settings implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 

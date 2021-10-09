@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.spring.electric.tools.models.entities.Ajustes;
+import com.spring.electric.tools.models.entities.Settings;
 import com.spring.electric.tools.models.services.AjustesService;
 
 @Controller
@@ -29,8 +29,8 @@ public class AjustesController {
 	}	
 	
 	@PostMapping("/ajustes")
-	public ResponseEntity<?> create(@RequestBody Ajustes ajuste) {
-		Ajustes ajusteNew = null;
+	public ResponseEntity<?> create(@RequestBody Settings ajuste) {
+		Settings ajusteNew = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
 			ajusteNew = ajusteService.save(ajuste);

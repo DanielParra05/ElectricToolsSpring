@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head th:replace="fragments/layout :: head">
-</head>
-
-<body>
-	<header th:replace="fragments/layout :: header"></header>
-	<div class="container" style="padding-top:1%">
-		<h4 th:text="#{txt.new.customer}"></h4>
-		<hr width=100%>
-		<div>
-			<form th:action="@{/customer-management/customer-form}" th:object="${customer}" method="POST">
-				<div class="container">
-					<div class="row">
-						<div class=" col-sm">
-							<label for="name" style="font-weight: bold;" class="col-form-label"
-								th:text="#{txt.customer.name}+':'"></label>
-							<input id="name" type="text" class="form-control" th:field="*{name}" required>
-						</div>
-						<div class=" col-sm">
-							<label for="lastName" style="font-weight: bold;" class="col-form-label"
-								th:text="#{txt.customer.last.name}+':'"></label>
-							<input id="lastName" type="text" class="form-control" th:field="*{lastName}" required>
-						</div>
-					</div>
-					<div class="row">
-						<div class=" col-sm">
-							<label for="identification" style="font-weight: bold;" class="col-form-label"
-								th:text="#{txt.customer.identification}+':'"></label>
-							<input id="identification" type="number" class="form-control" th:field="*{identification}"
-								required>
-							<div th:if="${#fields.hasErrors('identification')}" th:errors="*{identification}" class="alert alert-danger" role="alert">
-								</div>
-							</div>
-							<div class=" col-sm">
-								<label style="font-weight: bold;" for="phone" class="col-form-label" th:text="#{txt.customer.phone}+':'"></label>
-								<input id="phone" type="number" class="form-control" th:field="*{phone}" required>
-							</div>
-					</div>						
-					<div class="py-3 text-center">							
-						<button type="submit" class="btn btn-success" th:text="#{txt.save}"></button>
-					</div>						
-				</div>
-			</form>		
-		</div>
-	</div>
-
-	<footer th:replace="fragments/layout :: footer"></footer>
-</body>
-
+   <head>
+      <div th:replace="fragments/layout :: headFragment"></div>
+   </head>
+   <body>
+      <header th:replace="fragments/layout :: header"></header>
+      <div class="container my-2">
+         <h4 th:text="#{txt.new.customer}"></h4>
+         <hr width=100%>
+         <div>
+            <form th:action="@{/customer-management/customer-form}" th:object="${customer}" method="POST">
+               <div class="container">
+                  <div class="row">
+                     <div class=" col-sm">
+                        <label for="name" style="font-weight: bold;" class="col-form-label"
+                           th:text="#{txt.customer.name}+':'"></label>
+                        <input id="name" type="text" class="form-control form-control-sm" th:field="*{name}" required>
+                     </div>
+                     <div class=" col-sm">
+                        <label for="lastName" style="font-weight: bold;" class="col-form-label"
+                           th:text="#{txt.customer.last.name}+':'"></label>
+                        <input id="lastName" type="text" class="form-control form-control-sm" th:field="*{lastName}" required>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class=" col-sm">
+                        <label for="identification" style="font-weight: bold;" class="col-form-label"
+                           th:text="#{txt.customer.identification}+':'"></label>
+                        <input id="identification" type="number" class="form-control form-control-sm" th:field="*{identification}"
+                           required>
+                        <div th:if="${#fields.hasErrors('identification')}" th:errors="*{identification}" class="alert alert-danger" role="alert">
+                        </div>
+                     </div>
+                     <div class=" col-sm">
+                        <label style="font-weight: bold;" for="phone" class="col-form-label" th:text="#{txt.customer.phone}+':'"></label>
+                        <input id="phone" type="number" class="form-control form-control-sm" th:field="*{phone}" required>
+                     </div>
+                  </div>
+                  <div class="py-3 text-center">							
+                     <button type="submit" class="btn btn-success" th:text="#{txt.save}"></button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <footer>
+         <div th:replace="fragments/layout :: footerFragment"></div>
+      </footer>
+   </body>
 </html>

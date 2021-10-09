@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head th:replace="fragments/layout :: head">
-</head>
-
-<body>
-	<div class="text-center ">
-	<br/>
-	<br/>
-		<h1>Oops... Hemos tenido un inconveniente!</h1>
-		<br/>
-		<img th:src="@{/images/errors/500-error.png}" />
-		<br/>
-		<br/>
-		<br/>
-		<div class="text-center">
-			<a class="btn btn-warning btn-lg"
-				href="/tools-app">Volver a la app</a>
-		</div>
-	</div>
-</body>
-
+   <head>
+      <div th:replace="fragments/layout :: headFragment"></div>
+   </head>
+   <body>
+      <div class="text-center ">
+         <br/>
+         <br/>
+         <h1>Oops... Hemos tenido un inconveniente!</h1>
+         <br/>
+         <img th:src="@{/images/errors/500-error.png}" />
+         <br/>
+         <br/>
+         <br/>
+         <div class="text-center">
+            <a class="btn btn-warning btn-lg"
+               href="/tools-app">Volver a la app</a>
+         </div>
+      </div>
+   </body>
 </html>

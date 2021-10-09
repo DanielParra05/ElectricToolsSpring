@@ -2,16 +2,15 @@ package com.spring.electric.tools.models.enums;
 
 /**
  * Clase para indicar el estado de una orden
+ * 
  * @author Jose Daniel Parra
- *
  */
-public enum OrdenEstado { 
-	EN_REPARACION("En Reparacion"),
-	LISTO("Listo");
-	
+public enum OrderStatus {
+	EN_REPARACION("En Reparacion"), LISTO("Listo");
+
 	private String valor;
-	
-	private OrdenEstado(String valor) {
+
+	private OrderStatus(String valor) {
 		this.valor = valor;
 	}
 

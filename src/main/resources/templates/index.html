@@ -1,72 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/layout :: head">
-</head>
-<body>
-	<header th:replace="fragments/layout :: header"></header>
-	
-	<main>
-		<div class="album py-5">
-			<div class="container">
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-					<div class="col">
-						<div class="card h-100 text-center">
-							<img th:src="@{/images/home-img/orders.png}"
-								class="card-img-top" alt="ordenes">
-							<div class="card-body">
-								<h5 class="card-title" th:text="#{txt.orders.management}"></h5>
-								<p class="card-text" th:text="#{txt.orders.management.description}"></p>
-							</div>
-							<div class="card-footer">
-								<a href="/tools-app/order-management/orders" class="btn btn-primary" th:text="#{txt.enter}"></a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100 text-center">
-							<img th:src="@{/images/home-img/customers.png}"
-								class="card-img-top" alt="customers">
-							<div class="card-body">
-								<h5 class="card-title"  th:text="#{txt.customers.management}"></h5>
-								<p class="card-text"  th:text="#{txt.customers.management.description}"></p>
-							</div>
-							<div class="card-footer">
-								<a href="/tools-app/customer-management/customers"
-									class="btn btn-primary" th:text="#{txt.enter}"></a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100 text-center">
-							<img th:src="@{/images/home-img/settings.png}"
-								class="card-img-top" alt="ajustes">
-							<div class="card-body">
-								<h5 class="card-title" th:text="#{txt.settings}"></h5>
-								<p class="card-text" th:text="#{txt.settings.description}"></p>
-							</div>
-							<div class="card-footer">
-								<a href="/ajustes" class="btn btn-primary" th:text="#{txt.enter}"></a>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card h-100 text-center">
-							<img th:src="@{/images/home-img/accounting.png}"
-								class="card-img-top" alt="contabilidad">
-							<div class="card-body">
-								<h5 class="card-title" th:text="#{txt.accounting}"></h5>
-								<p class="card-text" th:text="#{txt.accounting.description}"></p>
-							</div>
-							<div class="card-footer">
-								<a href="contabilidad" class="btn btn-primary" th:text="#{txt.enter}"></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-
-	<footer th:replace="fragments/layout :: footer"> </footer>
-</body>
+   <head>
+      <div th:replace="fragments/layout :: headFragment"></div>
+   </head>
+   <body>
+      <header th:replace="fragments/layout :: header"></header>
+      <main>
+         <div class="album py-5">
+            <div class="container">
+               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+                  <div class="col">
+                     <div class="card h-100 text-center">
+                        <img th:src="@{/images/home-img/orders.png}" class="card-img-top" alt="ordenes">
+                        <div class="card-body">
+                           <h5 class="card-title" th:text="#{txt.orders.management}"></h5>
+                           <p class="card-text" th:text="#{txt.orders.management.description}"></p>
+                        </div>
+                        <div class="card-footer">
+                           <a href="/tools-app/order-management/orders" class="btn btn-primary"
+                              th:text="#{txt.enter}"></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <div class="card h-100 text-center">
+                        <img th:src="@{/images/home-img/customers.png}" class="card-img-top" alt="customers">
+                        <div class="card-body">
+                           <h5 class="card-title" th:text="#{txt.customers.management}"></h5>
+                           <p class="card-text" th:text="#{txt.customers.management.description}"></p>
+                        </div>
+                        <div class="card-footer">
+                           <a href="/tools-app/customer-management/customers" class="btn btn-primary"
+                              th:text="#{txt.enter}"></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <div class="card h-100 text-center">
+                        <img th:src="@{/images/home-img/settings.png}" class="card-img-top" alt="ajustes">
+                        <div class="card-body">
+                           <h5 class="card-title" th:text="#{txt.settings}"></h5>
+                           <p class="card-text" th:text="#{txt.settings.description}"></p>
+                        </div>
+                        <div class="card-footer">
+                           <a href="/ajustes" class="btn btn-primary" th:text="#{txt.enter}"></a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <div class="card h-100 text-center">
+                        <img th:src="@{/images/home-img/accounting.png}" class="card-img-top" alt="contabilidad">
+                        <div class="card-body">
+                           <h5 class="card-title" th:text="#{txt.accounting}"></h5>
+                           <p class="card-text" th:text="#{txt.accounting.description}"></p>
+                        </div>
+                        <div class="card-footer">
+                           <a href="contabilidad" class="btn btn-primary" th:text="#{txt.enter}"></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer>
+         <div th:replace="fragments/layout :: footerFragment"></div>
+      </footer>
+   </body>
 </html>

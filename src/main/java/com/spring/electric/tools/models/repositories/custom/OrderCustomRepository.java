@@ -9,7 +9,7 @@ import com.spring.electric.tools.models.entities.WorkOrder;
  * @author Jose Daniel Parra
  *
  */
-public interface OrdenRepositoryCustom {
+public interface OrderCustomRepository {
 	
 	/**
 	 * Filtrar las ordenes segun el parametro enviado

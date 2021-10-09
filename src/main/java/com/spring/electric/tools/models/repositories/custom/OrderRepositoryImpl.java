@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 
 import com.spring.electric.tools.models.entities.WorkOrder;
 
-public class OrdenRepositoryImpl implements OrdenRepositoryCustom {
+public class OrderRepositoryImpl implements OrderCustomRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;

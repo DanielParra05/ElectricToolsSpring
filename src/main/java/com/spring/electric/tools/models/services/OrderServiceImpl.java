@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.electric.tools.models.entities.WorkOrder;
-import com.spring.electric.tools.models.repositories.OrdenRepository;
+import com.spring.electric.tools.models.repositories.OrderRepository;
 
 @Transactional
 @Service
 public class OrderServiceImpl implements OrderService {
 
 	@Autowired
-	OrdenRepository ordenDAO;
+	OrderRepository ordenDAO;
 
 	@Override
 	@Transactional(readOnly = true)

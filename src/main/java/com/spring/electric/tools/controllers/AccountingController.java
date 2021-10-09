@@ -14,7 +14,7 @@ import com.spring.electric.tools.models.services.OrderService;
 
 @RestController
 @RequestMapping("/api")
-public class ContabilidadController {
+public class AccountingController {
 
 	@Autowired
 	private OrderService ordenService;
