@@ -38,7 +38,7 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerValidator customerValidador;
-	
+
 	@Autowired
 	private MessageSource messageSource;
 
@@ -55,10 +55,11 @@ public class CustomerController {
 		PageRender<Customer> pageRender;
 		if (!searchField.isEmpty()) {
 			customers = customerService.searchCustomer(searchField, pageRequest);
-			pageRender= new PageRender<Customer>("/customer-management/customers?searchField=".concat(searchField), customers);
+			pageRender = new PageRender<Customer>("/customer-management/customers?searchField=".concat(searchField),
+					customers);
 		} else {
 			customers = customerService.findAll(pageRequest);
-			pageRender= new PageRender<Customer>("/customer-management/customers", customers);
+			pageRender = new PageRender<Customer>("/customer-management/customers", customers);
 		}
 		model.addAttribute("customers", customers);
 		model.addAttribute("page", pageRender);
@@ -79,16 +80,17 @@ public class CustomerController {
 			return "customer-management/customer-form";
 		}
 		flash.addFlashAttribute("success",
-				customer.getId() != null ? messageSource.getMessage("msg.customer.updated", null, null) : messageSource.getMessage("msg.customer.registered", null, null));
+				customer.getId() != null ? messageSource.getMessage("msg.customer.updated", null, null)
+						: messageSource.getMessage("msg.customer.registered", null, null));
 		customerService.save(customer);
 		status.setComplete();
 		return "redirect:/customer-management/customers";
 	}
 
-	@GetMapping("/customer-form/{id}")
-	public String updateCustomer(@PathVariable Long id, Model model) {
-		if (id > 0) {
-			Customer customer = customerService.findById(id);
+	@GetMapping("/customer-form/{customerId}")
+	public String updateCustomer(@PathVariable Long customerId, Model model) {
+		if (customerId > 0) {
+			Customer customer = customerService.findById(customerId);
 			model.addAttribute("customer", customer);
 		} else {
 			return "redirect:/customer-management/customers";
@@ -96,10 +98,14 @@ public class CustomerController {
 		return "customer-management/customer-form";
 	}
 
-	@GetMapping("/delete-customer/{id}")
-	public String deleteCustomer(@PathVariable Long id, Model model, RedirectAttributes flash) {
-		if (id > 0) {
-			customerService.delete(id);
+	@GetMapping("/delete-customer/{customerId}")
+	public String deleteCustomer(@PathVariable Long customerId, Model model, RedirectAttributes flash) {
+		Customer customer = customerService.findById(customerId);
+
+		if (customer != null && customerService.hasOrder(customer)) {
+			flash.addFlashAttribute("error", messageSource.getMessage("error.customer.delete", null, null));
+		} else {
+			customerService.delete(customerId);
 			flash.addFlashAttribute("success", messageSource.getMessage("msg.customer.deleted", null, null));
 		}
 		return "redirect:/customer-management/customers";

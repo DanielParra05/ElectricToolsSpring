@@ -9,13 +9,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.electric.tools.models.entities.Customer;
+import com.spring.electric.tools.models.entities.WorkOrder;
 import com.spring.electric.tools.models.repositories.CustomerRespository;
+import com.spring.electric.tools.models.repositories.OrderRepository;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerRespository customerRepository;
+	
+	@Autowired
+	private OrderRepository orderRepository;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -64,6 +69,12 @@ public class CustomerServiceImpl implements CustomerService {
 		} else {
 			return customerRepository.searchCustomer(campoBusqueda, pageable);
 		}
+	}
+
+	@Override
+	public boolean hasOrder(Customer customer) {
+		WorkOrder foundOrder = orderRepository.findFirstByCustomer(customer);
+		return foundOrder != null; 
 	}
 
 }

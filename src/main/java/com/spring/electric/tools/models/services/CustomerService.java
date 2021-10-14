@@ -26,7 +26,7 @@ public interface CustomerService {
 
 	Customer save(Customer customer);
 
-	void delete(Long id);
+	void delete(Long customerId);
 
 	Customer findByIdentification(String identification);
 
@@ -38,5 +38,6 @@ public interface CustomerService {
 	 */
 	Page<Customer> searchCustomer(String campoBusqueda, Pageable pageable);
 	
+	boolean hasOrder(Customer customer);
 
 }

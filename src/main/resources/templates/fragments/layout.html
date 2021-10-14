@@ -74,7 +74,7 @@
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
                <use xlink:href="#exclamation-triangle-fill" />
             </svg>
-            <p th:text="${warning}"></p>
+            <div th:text="${warning}"></div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
          </div>
          <!--Error notification-->
@@ -83,7 +83,7 @@
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
                <use xlink:href="#exclamation-triangle-fill" />
             </svg>
-            <p th:text="${error}"></p>
+            <div th:text="${error}"></div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
          </div>
          <!--Success notification-->
@@ -102,7 +102,7 @@
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
                <use xlink:href="#info-fill" />
             </svg>
-            <p th:text="${info}"></p>
+            <div th:text="${info}"></div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
          </div>
       </header>
