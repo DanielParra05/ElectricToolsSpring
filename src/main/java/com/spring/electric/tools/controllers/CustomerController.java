@@ -42,7 +42,7 @@ public class CustomerController {
 	@Autowired
 	private MessageSource messageSource;
 
-	@InitBinder // Validator injection
+	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(customerValidador);
 	}
@@ -67,7 +67,7 @@ public class CustomerController {
 	}
 
 	@GetMapping("/customer-form")
-	public String createcustomer(Model model) {
+	public String createCustomer(Model model) {
 		model.addAttribute("customer", new Customer());
 		return "customer-management/customer-form";
 	}

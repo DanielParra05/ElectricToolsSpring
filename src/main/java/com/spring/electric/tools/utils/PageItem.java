@@ -9,9 +9,9 @@ public class PageItem {
 	private int number;
 	private boolean current;
 	
-	public PageItem (int numero, boolean actual) {
+	public PageItem (int numero, boolean current) {
 		this.number = numero;
-		this.current = actual;		
+		this.current = current;		
 	}
 	
 	

@@ -17,7 +17,7 @@ import com.spring.electric.tools.models.services.OrderService;
 public class AccountingController {
 
 	@Autowired
-	private OrderService ordenService;
+	private OrderService orderService;
 
 	/**
 	 * Obtener ordenes que tiene fechaEntrada/fechaSalida dentro del rango
@@ -28,7 +28,7 @@ public class AccountingController {
 	@GetMapping("/contabilidad/{fechaEntrada}/{fechaSalida}")
 	public List<WorkOrder> getContabilidad(@PathVariable String fechaEntrada, @PathVariable String fechaSalida) {
 	
-		return	ordenService.getContabilidad(DateConverter.convertToLocalDate(fechaEntrada),
+		return	orderService.getContabilidad(DateConverter.convertToLocalDate(fechaEntrada),
 				DateConverter.convertToLocalDate(fechaSalida));
 	
 	}
@@ -41,7 +41,7 @@ public class AccountingController {
 	@GetMapping("/arreglos/{fechaEntrada}/{fechaSalida}")
 	public Integer getValorArreglosTotal(@PathVariable String fechaEntrada, @PathVariable String fechaSalida) {
 
-		return ordenService.getValorArreglosTotal(DateConverter.convertToLocalDate(fechaEntrada),
+		return orderService.getValorArreglosTotal(DateConverter.convertToLocalDate(fechaEntrada),
 				DateConverter.convertToLocalDate(fechaSalida));
 	}
 
@@ -53,7 +53,7 @@ public class AccountingController {
 	@GetMapping("/repuestos/{fechaEntrada}/{fechaSalida}")
 	public Integer getValorRepuestosTotal(@PathVariable String fechaEntrada, @PathVariable String fechaSalida) {
 
-		return ordenService.getValorRepuestosTotal(DateConverter.convertToLocalDate(fechaEntrada),
+		return orderService.getValorRepuestosTotal(DateConverter.convertToLocalDate(fechaEntrada),
 				DateConverter.convertToLocalDate(fechaSalida));
 	}
 
