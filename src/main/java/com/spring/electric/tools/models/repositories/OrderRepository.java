@@ -36,8 +36,8 @@ public interface OrderRepository extends CrudRepository<WorkOrder, Long>, OrderC
 	
 	WorkOrder findFirstByCustomer(Customer customer);
 	
-	Page<WorkOrder> findAll(Pageable pageRequest);
+	Page<WorkOrder> findAllByOrderByEntryDateDesc(Pageable pageRequest);
 	
-	@Query("SELECT DISTINCT o from WorkOrder o INNER JOIN Customer c ON c.id = o.customer WHERE c.identification LIKE ?1")
-	Page<WorkOrder> searchOrder(String searchField, Pageable pageRequest);
+	@Query("SELECT DISTINCT o from WorkOrder o INNER JOIN Customer c ON c.id = o.customer WHERE o.id = ?1 OR c.identification LIKE ?2")
+	Page<WorkOrder> searchOrder(long orderId, String customerIdentification, Pageable pageRequest);
 }

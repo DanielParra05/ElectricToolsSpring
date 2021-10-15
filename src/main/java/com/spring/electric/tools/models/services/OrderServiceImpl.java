@@ -60,13 +60,13 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Page<WorkOrder> findAll(Pageable pageRequest) {		
-		return orderRepository.findAll(pageRequest);
+	public Page<WorkOrder> findAll(Pageable pageRequest) {
+		return orderRepository.findAllByOrderByEntryDateDesc(pageRequest);
 	}
 
 	@Override
 	public Page<WorkOrder> searchOrder(String searchField, Pageable pageRequest) {
-		return orderRepository.searchOrder(searchField, pageRequest);
+		return orderRepository.searchOrder(Long.parseLong(searchField), searchField, pageRequest);
 	}
 
 }

@@ -61,6 +61,7 @@ public class OrderController {
 		}
 		model.addAttribute("workOrders", orders);
 		model.addAttribute("page", pageRender);
+		model.addAttribute("searchField", searchField);
 
 		return "order-management/orders";
 	}

@@ -6,7 +6,7 @@ package com.spring.electric.tools.models.enums;
  * @author Jose Daniel Parra
  */
 public enum OrderStatus {
-	EN_REPARACION("En Reparacion"), LISTO("Listo");
+	EN_REPARACION("En reparación"), LISTO("Listo");
 
 	private String valor;
 

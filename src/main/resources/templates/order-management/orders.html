@@ -16,9 +16,19 @@
 					th:text="#{txt.new.order}"></a>
 			</div>
 			<div class="input-group">
-				<input id="searchField" type="number" class="form-control" placeholder="(N.º de orden o c&#233;dula del cliente)" th:value="${searchField}">
-				<button class="btn btn-outline-success" type="button" th:text="#{txt.search}" onclick="return searchOrder()"></button>
-				<button class="btn btn-outline-danger" type="button" th:text="#{txt.clear}" onclick="return clearSearchBar('/tools-app/order-management/orders')"></button>
+				<input id="searchField" type="text" class="form-control"
+					placeholder="(N.º de orden o c&#233;dula del cliente)" th:value="${searchField}">
+				<button class="btn btn-outline-success" type="button" th:text="#{txt.search}"
+					onclick="return searchOrder()"></button>
+				<button class="btn btn-outline-danger" type="button" th:text="#{txt.clear}"
+					onclick="return clearSearchBar('/tools-app/order-management/orders')"></button>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div id="errorSearchOrder" class="alert alert-danger" style="display: none" role="alert"
+						th:text="#{error.search.order.bar}">
+					</div>
+				</div>
 			</div>
 			<br />
 			<div class="table-responsive">
@@ -52,7 +62,7 @@
 							<td th:text="${order.customer.name}+' '+${order.customer.lastName}" />
 							<td th:text="${order.entryDate}" />
 							<td th:text="${order.repairCost}" />
-							<td th:text="${order.orderStatus}" />
+							<td th:text="${order.orderStatus.valor}" />
 							<td>
 								<div class="row">
 									<div class="col text-center">
