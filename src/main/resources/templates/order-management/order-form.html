@@ -19,8 +19,8 @@
 						<div class="col-sm">
 							<label for="customer" style="font-weight: bold" class="col-form-label"
 								th:text="#{txt.customer}"></label>
-							<select id="selectCustomer" style="width: 100%;" th:field="*{customer}">
-								<option selected th:text="#{txt.seleccione.cliente}" value="0"></option>
+							<select id="selectCustomer" style="width: 100%;" th:field="*{customer}" required>
+								<option selected th:text="#{txt.seleccione.cliente}" value=""></option>
 								<option th:each="customer : ${customers}"
 									th:text="${customer.name}+' '+${customer.lastName}+' - C.C. '+${customer.identification}"
 									th:value="${customer.id}"></option>

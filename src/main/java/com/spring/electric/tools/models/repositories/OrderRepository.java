@@ -3,6 +3,8 @@ package com.spring.electric.tools.models.repositories;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -33,4 +35,9 @@ public interface OrderRepository extends CrudRepository<WorkOrder, Long>, OrderC
 	List<WorkOrder> findAllByOrderByEntryDateDesc();
 	
 	WorkOrder findFirstByCustomer(Customer customer);
+	
+	Page<WorkOrder> findAll(Pageable pageRequest);
+	
+	@Query("SELECT DISTINCT o from WorkOrder o INNER JOIN Customer c ON c.id = o.customer WHERE c.identification LIKE ?1")
+	Page<WorkOrder> searchOrder(String searchField, Pageable pageRequest);
 }
